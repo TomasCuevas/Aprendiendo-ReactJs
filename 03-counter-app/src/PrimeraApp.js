@@ -1,14 +1,8 @@
 import React from 'react';
 // import { Fragment } from 'react';
 
-const PrimeraApp = () => {
+const PrimeraApp = ( { saludo = 'Hola Mundo' } ) => {
 
-    const saludo = 'Hola Mundo'
-    // const saludo = {
-    //     nombre: 'Tomás',
-    //     edad: 21
-    // }
-    
     return (
         <>
             <h1> { saludo } </h1>
