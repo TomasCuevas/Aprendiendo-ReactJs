@@ -1,8 +1,14 @@
-test( 'debe de ser true', () => {
+describe( 'pruebas en el archivo demo.test.js', () => {
 
-    const isActive = true;
+    test( 'deben de ser iguales los strings', () => {
 
-    if ( !isActive ) {
-        throw new Error( 'No esta activo.' );
-    }
+        // 1. Inicializacion
+        const mensaje = 'Hola Mundo';
+    
+        // 2. Estimulo
+        const mensaje2 = "Hola Mundo";
+    
+        // 3. Observar el comportamiento
+        expect( mensaje ).toBe( mensaje2 );
+    });
 });
