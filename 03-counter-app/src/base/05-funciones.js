@@ -16,23 +16,23 @@ const saludar3 = ( nombre ) => `Hola, ${ nombre }`;
 
 const saludar4 = () => `Hola Mundo`;
 
-console.log( saludar( 'Goku' ) );
-console.log( saludar2( 'Vegeta' ) );
-console.log( saludar3( 'Krilin' ) );
-console.log( saludar4() );
+// console.log( saludar( 'Goku' ) );
+// console.log( saludar2( 'Vegeta' ) );
+// console.log( saludar3( 'Krilin' ) );
+// console.log( saludar4() );
 
-const getUser = () => ({
+export const getUser = () => ({
     id: '123abc',
     username: 'Pepito123'
 })
 
-console.log( getUser() );
+// console.log( getUser() );
 
-const getUserActive = ( nombre ) => ({
+export const getUserActive = ( nombre ) => ({
     id: '123ABC',
     username: nombre
 })
 
 const user = getUserActive('Alberto');
 
-console.log( user );
+// console.log( user );
