@@ -1,4 +1,4 @@
-import { getHeroeById } from './bases/08-imp-exp'
+import { getHeroeById } from './08-imp-exp'
 
 // const promesa = new Promise( ( resolve, reject ) => {
 //     setTimeout( () => {
@@ -20,7 +20,7 @@ import { getHeroeById } from './bases/08-imp-exp'
 //     console.log( err );
 // })
 
-const getHeroeByIdAsync = ( id ) => {
+export const getHeroeByIdAsync = ( id ) => {
     
     return new Promise( ( resolve, reject ) => {
         setTimeout( () => {
@@ -33,10 +33,6 @@ const getHeroeByIdAsync = ( id ) => {
                 reject( 'No se encontro un hereo con tal ID' );
             }
     
-        }, 3000);
+        }, 1500);
     });
 }
-
-getHeroeByIdAsync( 2 )
-    .then( console.log )
-    .catch( console.warn )
