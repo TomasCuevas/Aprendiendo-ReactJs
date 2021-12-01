@@ -44,10 +44,15 @@ describe( 'Pruebas en <CounterApp />', () => {
 
     test( 'Debe de resetear el valor con el boton reset', () => {
 
+        const wrapper = shallow( <CounterApp value={ 110 } /> )
+        
+        wrapper.find('button').at( 0 ).simulate( 'click' );
+        wrapper.find('button').at( 0 ).simulate( 'click' );
         wrapper.find('button').at( 1 ).simulate( 'click' );
+        
         const counterText = wrapper.find( 'h2' ).text();
 
-        expect( counterText ).toBe( '0' );
+        expect( counterText ).toBe( '110' );
     });
     
 })
