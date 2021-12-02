@@ -2,6 +2,16 @@
   box-sizing: border-box;
   font-family: Helvetica, sans-serif;
 }
+
 body{
   padding: 60px;
+}
+
+input{
+  border: 2px solid #333;
+  border-radius: 10px;
+  color: #888;
+  font-size: 1.2rem;
+  padding: 10px;
+  width: 100%;
 }
