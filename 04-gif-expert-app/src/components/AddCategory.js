@@ -15,7 +15,7 @@ export const AddCategory = ({ setCategories }) => {
         e.preventDefault();
 
         if ( inputValue.trim().length > 2 ) {
-            setCategories( ( categories ) => [ ...categories, inputValue ] );
+            setCategories( ( categories ) => [ inputValue, ...categories ] );
             setInputValue( '' );            
         }
 
@@ -23,7 +23,6 @@ export const AddCategory = ({ setCategories }) => {
 
     return (
         <>
-            <h2>Agregar Categoria</h2>
             <form onSubmit={ handleSubmit } >
                 <input 
                     type="text"

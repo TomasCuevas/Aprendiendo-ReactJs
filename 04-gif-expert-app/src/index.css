@@ -33,5 +33,7 @@ input{
   text-align: center;
 }
 .card img{
-  max-height: 180px;
+  min-width: 70px;
+  max-width: 300px;
+  max-height: 250px;
 }
