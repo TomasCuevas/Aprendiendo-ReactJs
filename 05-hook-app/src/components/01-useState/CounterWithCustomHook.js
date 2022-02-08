@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useCounter } from '../../hooks/useCounter';
-import './counterApp.css';
+import './counter.css';
 
 export const CounterWithCustomHook = () => {
     
@@ -10,7 +10,7 @@ export const CounterWithCustomHook = () => {
     return (
         <>
             <h1>Counter with Custom Hook: { counter }</h1>
-            <br />
+            <hr />
 
             <button
                 onClick={ () => increment() }

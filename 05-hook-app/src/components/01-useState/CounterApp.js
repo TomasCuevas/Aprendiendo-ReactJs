@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './counterApp.css';
+import './counter.css';
 
 export const CounterApp = () => {
     const [state, setState] = useState({
@@ -16,7 +16,7 @@ export const CounterApp = () => {
         <>
             <h1>Counter1 { counter1 }</h1>
             <h1>Counter2 { counter2 }</h1>
-            <br />
+            <hr />
 
             <button
                 onClick={ () => {
