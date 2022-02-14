@@ -1,0 +1,13 @@
+import React from 'react'
+
+import { useFetch } from '../../hooks/useFetch';
+import './effects.css';
+
+export const MultiplesCustomHooks = () => {
+    const state = useFetch( `https://www.breakingbadapi.com/api/quotes/1` );
+    console.log( state );
+    
+    return (
+        <h1>Custom Hook!!!</h1>
+    )
+}
