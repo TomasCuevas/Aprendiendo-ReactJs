@@ -5,14 +5,15 @@ import { useFetch } from '../../hooks/useFetch';
 import './effects.css';
 
 export const MultiplesCustomHooks = () => {
-    const { counter, increment, decrement } = useCounter(1);
-    const { data, loading, err }            = useFetch( `https://www.breakingbadapi.com/api/quotes/${ counter }` );
+    const { counter, increment } = useCounter(1);
+    const { data, loading }            = useFetch( `https://www.breakingbadapi.com/api/quotes/${ counter }` );
 
     const { author, quote } = !!data && data[0];
     
     return (
         <>  
             <h1 className='title'>Breaking Bad Quotes</h1>
+            <hr/>
 
             {
                 ( loading )
