@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
 
 // import { HooksApp } from './HooksApp';
 // import { CounterApp } from './components/01-useState/CounterApp';
@@ -12,10 +12,13 @@ import ReactDOM from 'react-dom';
 // import { Layout } from './components/05-useLayoutEffect/Layout';
 // import { Memorize } from './components/06-memos/Memorize';
 // import { MemoHook } from './components/06-memos/MemoHook';
-import { CallbackHook } from './components/06-memos/CallbackHook';
-import './index.css';
+// import { CallbackHook } from './components/06-memos/CallbackHook';
+// import { Padre } from './components/07-tarea-memo/Padre';
+// import './index.css';
 
-ReactDOM.render(
-    <CallbackHook />,
-    document.getElementById('root')
-);
+// ReactDOM.render(
+//     <Padre />,
+//     document.getElementById('root')
+// );
+
+import './components/08-useReducer/intro-reducer'
