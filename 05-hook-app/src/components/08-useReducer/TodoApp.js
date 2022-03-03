@@ -33,13 +33,22 @@ export const TodoApp = () => {
         reset();
     }
 
-    const handleRemoveTodo = (id) => {
+    const handleRemoveTodo = ( id ) => {
         const action = {
             type: 'remove',
             payload: id
         }
 
         dispatch( action )
+    }
+
+    const handleToggle = ( id ) => {
+        const action = {
+            type: 'toggle',
+            payload: id
+        }
+
+        dispatch( action );
     }
 
     useEffect( () => {
@@ -59,7 +68,11 @@ export const TodoApp = () => {
                                 className='list__item-container'
                                 key={todo.id}>
                                 <li className='list__item'>
-                                    <p className='list__item-text'> {index + 1}. {todo.description} </p>
+                                    <p 
+                                        className={ (todo.done) ? 'list__item-text complete' : 'list__item-text' }
+                                        onClick={ (e) => handleToggle( todo.id ) }> 
+                                        {index + 1}. {todo.description} 
+                                    </p>
                                     <button
                                         className='list__delete-item'
                                         onClick={ () => handleRemoveTodo( todo.id ) }>
