@@ -13,8 +13,6 @@ export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, [], init)
     const [{description}, handleInputChange, reset] = useForm({ description: '' });
     
-    console.log( description );
-    
     const handleSubmitForm = ( e ) => {
         e.preventDefault();
 
@@ -35,6 +33,15 @@ export const TodoApp = () => {
         reset();
     }
 
+    const handleRemoveTodo = (id) => {
+        const action = {
+            type: 'remove',
+            payload: id
+        }
+
+        dispatch( action )
+    }
+
     useEffect( () => {
         localStorage.setItem( 'todos', JSON.stringify( todos ) );
     }, [todos])
@@ -51,11 +58,11 @@ export const TodoApp = () => {
                             <div
                                 className='list__item-container'
                                 key={todo.id}>
-                                <li
-                                    className='list__item'>
+                                <li className='list__item'>
                                     <p className='list__item-text'> {index + 1}. {todo.description} </p>
                                     <button
-                                        className='list__delete-item'>
+                                        className='list__delete-item'
+                                        onClick={ () => handleRemoveTodo( todo.id ) }>
                                         Borrar
                                     </button>
                                 </li>
