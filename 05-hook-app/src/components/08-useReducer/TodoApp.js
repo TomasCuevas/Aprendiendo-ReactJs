@@ -3,6 +3,7 @@ import React, { useEffect, useReducer } from 'react'
 import { todoReducer } from './todoReducer';
 import { useForm } from '../../hooks/useForm';
 import './styles.css';
+import { TodoList } from './components/TodoList/TodoList';
 
 const init = () => {
 
@@ -42,7 +43,7 @@ export const TodoApp = () => {
         dispatch( action )
     }
 
-    const handleToggle = ( id ) => {
+    const handleToggleTodo = ( id ) => {
         const action = {
             type: 'toggle',
             payload: id
@@ -61,28 +62,10 @@ export const TodoApp = () => {
             <hr/>
 
             <div className='todo__container'>
-                <ul className='list__container'>
-                    {
-                        todos.map( ( todo, index ) => (
-                            <div
-                                className='list__item-container'
-                                key={todo.id}>
-                                <li className='list__item'>
-                                    <p 
-                                        className={ (todo.done) ? 'list__item-text complete' : 'list__item-text' }
-                                        onClick={ (e) => handleToggle( todo.id ) }> 
-                                        {index + 1}. {todo.description} 
-                                    </p>
-                                    <button
-                                        className='list__delete-item'
-                                        onClick={ () => handleRemoveTodo( todo.id ) }>
-                                        Borrar
-                                    </button>
-                                </li>
-                            </div>
-                        ))
-                    }
-                </ul>
+                <TodoList 
+                    todos={ todos } 
+                    handleRemoveTodo={ handleRemoveTodo } 
+                    handleToggleTodo={ handleToggleTodo } />
 
                 <div className='add__todo-container'>
                     <h4 className='add__todo-title'>Agregar ToDo</h4>
