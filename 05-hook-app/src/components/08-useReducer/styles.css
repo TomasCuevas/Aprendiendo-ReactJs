@@ -8,26 +8,29 @@ hr {
 
 .todo__container {
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
 }
 
 .list__item-container {
     display: flex;
     align-items: center;
+    margin: 10px;
 }
 .list__item {
     width: 100%;
     display: grid;
-    justify-items: center;
+    justify-items: flex-start;
     align-items: center;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 60% 40%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
 }
 .list__item-text {
     cursor: pointer;
 }
 .list__delete-item {
-    justify-self: flex-start;
-    width: 20%;
+    justify-self: flex-end;
+    width: 30%;
     height: 30px;
     background-color: red;
     border: none;
@@ -46,6 +49,7 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 10px;
 }
 .add__todo-title {
     text-align: center;
