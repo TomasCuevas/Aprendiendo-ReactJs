@@ -1,6 +1,7 @@
 export const todoReducer = ( state = [], action ) => {
 
     switch (action?.type) {
+
         case 'add':
             return [...state, action.payload];
 
@@ -11,20 +12,20 @@ export const todoReducer = ( state = [], action ) => {
                     : todo 
             )
             
-        case 'toggle_old':
-            return state.map( ( todo ) => {
+        // case 'toggle_old':
+        //     return state.map( ( todo ) => {
 
-                if ( todo.id === action.payload ) {
-                    return {
-                        ...todo,
-                        done: !todo.done
-                    }
-                } else {
-                    return {
-                        ...todo
-                    }
-                }
-            })
+        //         if ( todo.id === action.payload ) {
+        //             return {
+        //                 ...todo,
+        //                 done: !todo.done
+        //             }
+        //         } else {
+        //             return {
+        //                 ...todo
+        //             }
+        //         }
+        //     })
 
         case 'remove':
             return state.filter( ( todo ) => todo.id !== action.payload);
