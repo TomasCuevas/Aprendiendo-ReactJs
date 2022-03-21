@@ -36,10 +36,11 @@ export const AddTodo = ({ handleAddTodo }) => {
                     type="text"
                     value={ description }
                     onChange={ handleInputChange }
-                    name='description'/>
+                    name='description'
+                />
                 <button 
                     type='submit'
-                    className='add__todo-btn'>
+                    className='add__todo-btn' >
                         Agregar
                 </button>
             </form>

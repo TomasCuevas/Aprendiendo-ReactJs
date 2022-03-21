@@ -14,7 +14,8 @@ export const TodoList = ({ todos, handleRemoveTodo, handleToggleTodo }) => {
                         todo={ todo } 
                         index={ index }
                         handleRemoveTodo={ handleRemoveTodo }
-                        handleToggleTodo={ handleToggleTodo } />
+                        handleToggleTodo={ handleToggleTodo } 
+                    />
                 ))
             }
         </ul>

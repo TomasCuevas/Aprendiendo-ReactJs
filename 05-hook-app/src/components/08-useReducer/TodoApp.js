@@ -55,9 +55,11 @@ export const TodoApp = () => {
                 <TodoList 
                     todos={ todos } 
                     handleRemoveTodo={ handleRemoveTodo } 
-                    handleToggleTodo={ handleToggleTodo } />
+                    handleToggleTodo={ handleToggleTodo } 
+                />
                 <AddTodo 
-                    handleAddTodo={ handleAddTodo } />
+                    handleAddTodo={ handleAddTodo } 
+                />
             </div>
         </>
     )
