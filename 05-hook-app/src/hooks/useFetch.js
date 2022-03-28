@@ -2,14 +2,13 @@ import { useEffect, useRef, useState } from "react"
 
 export const useFetch = ( url ) => {
     const isMounted = useRef( true );
-    const [state, setState] = useState( { data: null, loading: true, error: null } );
+    const [state, setState] = useState({ data: null, loading: true, error: null });
 
     useEffect( () => {
 
         return () => {
             isMounted.current = false;
         }
-
     }, [])
 
     useEffect( () => {
@@ -31,7 +30,6 @@ export const useFetch = ( url ) => {
             })
 
             .catch( err => {
-                console.log( err );
                 setState({
                     data: null,
                     loading: false,
