@@ -10,12 +10,14 @@ export const TodoListItem = ({ todo, index, handleRemoveTodo, handleToggleTodo }
                 <li className='list__item' >
                     <p 
                         className={ (todo.done) ? 'list__item-text complete' : 'list__item-text' }
-                        onClick={ (e) => handleToggleTodo( todo.id ) } > 
+                        onClick={ (e) => handleToggleTodo( todo.id ) } 
+                    > 
                             {index + 1}. {todo.description} 
                     </p>
                     <button
                         className='list__delete-item'
-                        onClick={ () => handleRemoveTodo( todo.id ) } >
+                        onClick={ () => handleRemoveTodo( todo.id ) } 
+                    >
                             Borrar
                     </button>
                 </li>
