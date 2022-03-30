@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <AppRouter /> debe de mostrarse correctamente 1`] = `
+<div>
+  <nav
+    className="nav__container"
+  >
+    <a
+      className="title__page"
+      href="/"
+      onClick={[Function]}
+    >
+      useContext
+    </a>
+    <ul
+      className="list__container"
+    >
+      <li
+        className="list__element"
+      >
+        <a
+          activeclassname="active"
+          aria-current="page"
+          className="list__element-text active"
+          href="/"
+          onClick={[Function]}
+        >
+           Home 
+        </a>
+      </li>
+      <li
+        className="list__element"
+      >
+        <a
+          activeclassname="active"
+          className="list__element-text"
+          href="/about"
+          onClick={[Function]}
+        >
+           About 
+        </a>
+      </li>
+      <li
+        className="list__element"
+      >
+        <a
+          activeclassname="active"
+          className="list__element-text"
+          href="/login"
+          onClick={[Function]}
+        >
+           Login 
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    className="main__container-all"
+  >
+    <div
+      className="main__container"
+    >
+      <div>
+        <h1>
+          HomeScreen
+        </h1>
+        <hr />
+        <pre
+          className="pre"
+        >
+          {
+    "name": "Tomas",
+    "email": "memowin15@gmail.com"
+}
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+`;
