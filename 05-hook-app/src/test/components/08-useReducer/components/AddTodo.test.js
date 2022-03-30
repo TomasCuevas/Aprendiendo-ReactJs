@@ -1,5 +1,5 @@
 import { shallow } from "enzyme";
-import { AddTodo } from "../../../components/08-useReducer/components/AddTodo/AddTodo";
+import { AddTodo } from "../../../../components/08-useReducer/components/AddTodo/AddTodo";
 
 describe('Pruebas en <AddTodo />', () => {
 

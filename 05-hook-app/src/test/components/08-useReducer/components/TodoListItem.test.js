@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 
-import { TodoListItem } from "../../../components/08-useReducer/components/TodoListItem/TodoListItem";
-import { demoTodos } from '../../fixtures/demoTodos';
+import { TodoListItem } from "../../../../components/08-useReducer/components/TodoListItem/TodoListItem";
+import { demoTodos } from '../../../fixtures/demoTodos';
 
 describe('Pruebas en <TodoListItem />', () => {
 
