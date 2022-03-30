@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import { AppRouter } from './AppRouter'
-import { UserContext } from './UserContext'
+import { AppRouter } from './AppRouter';
+import { UserContext } from './context/UserContext';
 
 export const MainApp = () => {
     const [user, setUser] = useState({});

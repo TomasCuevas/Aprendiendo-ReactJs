@@ -5,10 +5,10 @@ import {
     Route
 } from 'react-router-dom';
 
-import { NavBar } from './NavBar';
-import { AboutScreen } from './AboutScreen';
-import { HomeScreen } from './HomeScreen';
-import { LoginScreen } from './LoginScreen';
+import { NavBar } from './components/NavBar/NavBar';
+import { AboutScreen } from './screen/AboutScreen/AboutScreen';
+import { HomeScreen } from './screen/HomeScreen/HomeScreen';
+import { LoginScreen } from './screen/LoginScreen/LoginScreen';
 import './styles.css';
 
 export const AppRouter = () => {

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { UserContext } from './UserContext'
+import { UserContext } from '../../context/UserContext';
 
 export const AboutScreen = () => {
     const { user, setUser } = useContext( UserContext )
