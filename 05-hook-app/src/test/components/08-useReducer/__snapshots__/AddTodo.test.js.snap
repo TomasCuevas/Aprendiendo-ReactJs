@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <AddTodo /> debe de mostrarse correctamente 1`] = `
+<div
+  className="add__todo-container"
+>
+  <h4
+    className="add__todo-title"
+  >
+    Agregar ToDo
+  </h4>
+  <hr />
+  <form
+    autoComplete="off"
+    className="add__todo-form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="add__todo-input"
+      name="description"
+      onChange={[Function]}
+      placeholder="ToDo description"
+      type="text"
+      value=""
+    />
+    <button
+      className="add__todo-btn"
+      type="submit"
+    >
+      Agregar
+    </button>
+  </form>
+</div>
+`;
