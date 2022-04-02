@@ -1,0 +1,29 @@
+.container__all {
+  padding-top: 3rem;
+
+  hr {
+    margin: 2rem 0;
+  }
+  
+  .btn__primary {
+    min-width: 8rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: 300;
+    background-color: darkcyan;
+    color: #FFF;
+    transition: .3s ease-in;
+    cursor: pointer;
+    letter-spacing: 2px;
+    outline: 1px solid #FFF;
+  }
+  .btn__primary:hover {
+    background-color: #FFF;
+    outline: 1px solid darkcyan;
+    color: darkcyan;
+    font-weight: 700;
+  }
+}

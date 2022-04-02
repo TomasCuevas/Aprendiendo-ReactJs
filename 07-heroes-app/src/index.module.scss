@@ -1,0 +1,10 @@
+.container__all {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 0;
+
+  .container {
+    width: 90%;
+  }
+}
