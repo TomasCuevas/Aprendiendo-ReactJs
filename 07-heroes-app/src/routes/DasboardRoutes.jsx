@@ -7,19 +7,23 @@ import { HeroeScreen } from '../screen/HeroeScreen/HeroeScreen';
 import { MainScreen } from '../screen/MainScreen/MainScreen';
 
 import { Navbar } from '../components/Navbar/Navbar';
-import styles from './approuter.module.scss';
+import indexStyles from '../index.module.scss';
 
 export const DasboardRoutes = () => {
 
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path='/marvel' element={<MarvelScreen />} />
-        <Route path='/dc' element={<DcScreen />} />
-        <Route path='/heroe/heroeId' element={<HeroeScreen />} />
-        <Route path='*' element={<MainScreen />}/>
-      </Routes>
+      <main className={indexStyles.container__all}>
+        <div className={indexStyles.container}>
+          <Routes>
+            <Route path='/marvel' element={<MarvelScreen />} />
+            <Route path='/dc' element={<DcScreen />} />
+            <Route path='/heroe/heroeId' element={<HeroeScreen />} />
+            <Route path='*' element={<MainScreen />}/>
+          </Routes>
+        </div>
+      </main>
     </>
   )
 }

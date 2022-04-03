@@ -1,14 +1,16 @@
 import React from 'react'
+import { HeroesList } from '../../components/HeroesList/HeroesList';
 
 import indexStyles from '../../index.module.scss';
 
 export const MarvelScreen = () => {
 
   return (
-    <main className={`${indexStyles.container__all}`}>
-      <div className={`${indexStyles.container}`}>
-        <h1>Marvel Screen</h1>
-      </div>
-    </main>
+    <>
+      <h1>Marvel Screen</h1>
+      <hr />
+
+      <HeroesList publisher={'Marvel Comics'}/>
+    </>
   )
 }

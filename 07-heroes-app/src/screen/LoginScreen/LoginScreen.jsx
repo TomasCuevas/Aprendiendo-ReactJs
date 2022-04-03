@@ -12,7 +12,7 @@ export const LoginScreen = () => {
   }
   
   return (
-    <main className={`${indexStyles.container__all} ${styles.container__all}`}>
+    <main className={indexStyles.container__all}>
       <div className={indexStyles.container}>
         <h1>Login Screen</h1>
         <hr />
