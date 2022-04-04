@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { getHeroByPublisher } from '../../selectors/getHeroByPublisher';
+import { HeroCard } from './components/HeroCard';
 import styles from './heroesList.module.scss';
 
 export const HeroesList = ({ publisher }) => {
@@ -12,12 +13,10 @@ export const HeroesList = ({ publisher }) => {
       <ul className={styles.list}>
         {
           heroes.map(hero => (
-            <li 
+            <HeroCard 
               key={hero.id}
-              className={styles.list__element}
-            >
-              <p>{hero.superhero}</p>
-            </li>
+              {...hero}
+            />
           ))
         }
       </ul>
