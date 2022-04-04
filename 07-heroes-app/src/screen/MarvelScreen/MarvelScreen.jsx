@@ -1,7 +1,6 @@
 import React from 'react'
-import { HeroesList } from '../../components/HeroesList/HeroesList';
 
-import indexStyles from '../../index.module.scss';
+import { HeroesList } from '../../components/HeroesList/HeroesList';
 
 export const MarvelScreen = () => {
 

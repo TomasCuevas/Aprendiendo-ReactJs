@@ -1,7 +1,5 @@
 import React from 'react'
 
-import indexStyles from '../../index.module.scss';
-
 export const MainScreen = () => {
 
   return (
