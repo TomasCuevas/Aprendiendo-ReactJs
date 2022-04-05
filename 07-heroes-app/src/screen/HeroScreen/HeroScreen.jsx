@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useParams, Navigate, useNavigate } from 'react-router-dom'
 
 import { getHeroById } from '../../selectors/getHeroById';
@@ -8,7 +8,7 @@ export const HeroScreen = () => {
 
   const navigate = useNavigate();
   const { heroId } = useParams();
-  const hero = getHeroById(heroId);
+  const hero = useMemo(() => getHeroById(heroId), [heroId]);
 
   if ( !hero ) {
     return <Navigate to='/' replace />
@@ -24,7 +24,7 @@ export const HeroScreen = () => {
   } = hero;
 
   const handleReturn = () => {
-    (publisher === 'Dc Comics') 
+    (publisher === 'DC Comics') 
     ? navigate('/dc') 
     : navigate('/marvel');
   }

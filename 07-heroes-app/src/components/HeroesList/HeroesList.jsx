@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { getHeroByPublisher } from '../../selectors/getHeroByPublisher';
 import { HeroCard } from './components/HeroCard';
 import styles from './heroesList.module.scss';
 
-export const HeroesList = ({ publisher }) => {
+export const HeroesList = React.memo(({ publisher }) => {
 
-  const heroes = getHeroByPublisher(publisher);
-  
+  const heroes = useMemo(() => getHeroByPublisher(publisher), [publisher]);
+
   return (
     <div className={styles.list__container}>
       <ul className={styles.list}>
@@ -22,4 +22,4 @@ export const HeroesList = ({ publisher }) => {
       </ul>
     </div>
   )
-}
+})
