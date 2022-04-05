@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+html {
+  user-select: none;
+}
+
 hr {
   margin: 2rem 0;
 }

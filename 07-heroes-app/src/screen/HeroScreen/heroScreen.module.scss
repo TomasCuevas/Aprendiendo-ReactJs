@@ -1,0 +1,139 @@
+.card__container_all {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .card__container {
+    border-radius: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 45rem;
+    width: 75%;
+    max-width: 69rem;
+    animation-name: background;
+    animation-delay: 1.5s;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    
+    
+    // LEFT CARD
+    // LEFT CARD
+    // LEFT CARD
+    .left__card {
+      max-height: 45rem;
+      padding: 2rem;
+      width: 100%;
+      
+      .card__img {
+        border-radius: 2rem;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+        animation-name: img;
+        animation-duration: 1.5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+    }
+    
+    // RIGHT CARD
+    // RIGHT CARD
+    // RIGHT CARD
+    .right__card {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      padding: 2rem 2rem;
+      max-height: 45rem;
+      animation-name: right;
+      animation-duration: 1.5s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      border-left: 1px solid #0000;
+
+      .superhero {
+        font-size: 3rem;
+        text-align: center;
+        margin: 2rem 0;
+        transition: all .3s ease-in;
+      }
+      
+      .list_container {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+
+        .list__element {
+          font-size: 1rem;
+          line-height: 1.5rem;
+          font-weight: 500;
+          margin: 1rem 0;
+          padding: .5rem 1rem;
+          transition: .3s ease-in;
+        }
+
+        .list__element b {
+          text-decoration: underline;
+          text-underline-offset: 2px;
+          padding-right: .5rem;
+          font-size: 1.3rem;
+          font-family: 900;
+        }
+      }
+
+      .card__return {
+        border-radius: 1rem;
+        border: none;
+        outline: none;
+        margin: 2rem 0;
+        padding: 1rem 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+        border: 3px solid darkcyan;
+        color: darkcyan;
+        background-color: #FFF;
+        transition: .3s ease-in;
+      }
+      .card__return:hover {
+        border: 3px solid darkred;
+        color: darkred;
+      }
+    }
+  }
+}
+
+@keyframes img {
+  0% {
+    transform: translateX(-100rem) translateY(-4rem) scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes right {
+  0% {
+    transform: translateX(100rem) translateY(-4rem) scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes background {
+  0% {
+    background-color: #FFF;
+    border: 1px solid #FFF;
+  }
+  100% {
+    background-color: #FFF;
+    border: 1px solid darkcyan;
+    overflow: hidden;
+  }
+}
