@@ -36,6 +36,14 @@ export const Navbar = () => {
           </li>
           <li className={styles.list__item}>
             <NavLink 
+              to='/search' 
+              className={styles.nav__link} 
+            >
+              Search
+            </NavLink>
+          </li>
+          <li className={styles.list__item}>
+            <NavLink 
               to='/login' 
               className={`${styles.nav__link} ${styles.nav__link_login}`} 
             >

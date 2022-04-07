@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-import styles from '../heroesList.module.scss';
+import styles from './heroCard.module.scss';
  
 export const HeroCard = ({id, superhero, publisher}) => {
 

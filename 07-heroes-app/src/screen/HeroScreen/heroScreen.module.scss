@@ -97,8 +97,8 @@
         transition: .3s ease-in;
       }
       .card__return:hover {
-        border: 3px solid darkred;
-        color: darkred;
+        background-color: darkcyan;
+        color: #FFF;
       }
     }
   }
@@ -129,11 +129,11 @@
 @keyframes background {
   0% {
     background-color: #FFF;
-    border: 1px solid #FFF;
+    border: 2px solid #FFF;
   }
   100% {
     background-color: #FFF;
-    border: 1px solid darkcyan;
+    border: 2px solid darkcyan;
     overflow: hidden;
   }
 }
