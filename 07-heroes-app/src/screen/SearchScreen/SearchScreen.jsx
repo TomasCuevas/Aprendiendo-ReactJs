@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
 import { heroes } from '../../database/heroes';
+import { getHeroByName } from '../../selectors/getHeroByName';
 
 import { HeroCard } from '../../components/HeroesList/components/HeroCard';
 import styles from './searchScreen.module.scss';
@@ -12,12 +13,13 @@ export const SearchScreen = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const param = searchParams.get('hero') || '';
 
-  const [inputValue, handleInputChange, reset  ] = useForm({
+  const initialState = {
     searchInput: param
-  });
-  const heroesFiltered = heroes;
+  }
+  const [inputValue, handleInputChange, reset  ] = useForm(initialState);
+  useState
 
-  
+  const [heroFiltered, setHeroFiltered] = useState([]);
   
   const handleSearch = (e) => {
     e.preventDefault();
@@ -25,11 +27,27 @@ export const SearchScreen = () => {
     const hero = inputValue.searchInput.toLowerCase();
     setSearchParams({ hero });
 
+    const heroFilter = getHeroByName(hero);
+    setHeroFiltered(heroFilter);
+
     navigate(`/search?hero=${hero}`);
   }
 
-  
+  useEffect(() => {
+    if (param === '') {
+      setHeroFiltered([]);
+      handleInputChange({ target: { name: 'searchInput', value: '' } });
+    }
+    
+    if (param !== '') {
+      const heroFilter = getHeroByName(param);
+      setHeroFiltered(heroFilter);
+    }
+  }, [param])
 
+  
+  
+  
   return (
     <>
       <h1>Search Screen</h1>
@@ -49,7 +67,7 @@ export const SearchScreen = () => {
                 <span>Hero</span>
                 <input 
                   type="text" 
-                  placeholder='batman, spiderman, ironman, etc'
+                  placeholder='batman, spider man, iron man, etc'
                   name='searchInput'
                   value={inputValue.searchInput}
                   className={styles.form__input}
@@ -64,14 +82,34 @@ export const SearchScreen = () => {
 
           <div className={styles.right__container}>
             <h4 className={styles.search__title}> Result </h4>
+
             {
-              heroesFiltered.map(hero => (
+              (!param) 
+              &&
+              <div className={styles.search__info_container}>
+                <p className={styles.search__info}>Please enter a hero name</p>
+              </div>
+            }
+
+            {
+              (param !== null && param !== '' && heroFiltered.length === 0)
+              &&
+              <div className={styles.search__warning_container}>
+                <p className={styles.search__warning}>There is not a hero "{param}"</p>
+              </div>
+            }
+            
+            {
+              (heroFiltered.length > 0) 
+              &&
+              heroFiltered.map((hero) => (
                 <HeroCard 
-                  key={hero.id}
+                  key={ hero.id }
                   {...hero}
                 />
               ))
             }
+
           </div>
         </div>
       </div>
