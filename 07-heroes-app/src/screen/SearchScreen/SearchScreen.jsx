@@ -11,10 +11,10 @@ import styles from './searchScreen.module.scss';
 export const SearchScreen = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const param = searchParams.get('hero') || '';
+  const query = searchParams.get('hero') || '';
 
   const initialState = {
-    searchInput: param
+    searchInput: query
   }
   const [inputValue, handleInputChange, reset  ] = useForm(initialState);
   useState
@@ -34,16 +34,16 @@ export const SearchScreen = () => {
   }
 
   useEffect(() => {
-    if (param === '') {
+    if (query === '') {
       setHeroFiltered([]);
       handleInputChange({ target: { name: 'searchInput', value: '' } });
     }
     
-    if (param !== '') {
-      const heroFilter = getHeroByName(param);
+    if (query !== '') {
+      const heroFilter = getHeroByName(query);
       setHeroFiltered(heroFilter);
     }
-  }, [param])
+  }, [query])
 
   
   
@@ -84,7 +84,7 @@ export const SearchScreen = () => {
             <h4 className={styles.search__title}> Result </h4>
 
             {
-              (!param) 
+              (!query) 
               &&
               <div className={styles.search__info_container}>
                 <p className={styles.search__info}>Please enter a hero name</p>
@@ -92,10 +92,10 @@ export const SearchScreen = () => {
             }
 
             {
-              (param !== null && param !== '' && heroFiltered.length === 0)
+              (query !== null && query !== '' && heroFiltered.length === 0)
               &&
               <div className={styles.search__warning_container}>
-                <p className={styles.search__warning}>There is not a hero "{param}"</p>
+                <p className={styles.search__warning}>There is not a hero "{query}"</p>
               </div>
             }
             
