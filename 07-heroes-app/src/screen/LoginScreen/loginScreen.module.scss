@@ -1,21 +1,61 @@
-.btn__primary {
-  min-width: 8rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  border: none;
-  outline: none;
-  font-size: 1.5rem;
-  font-weight: 300;
-  background-color: darkcyan;
-  color: #FFF;
-  transition: .3s ease-in;
-  cursor: pointer;
-  letter-spacing: 2px;
-  outline: 1px solid #FFF;
-}
-.btn__primary:hover {
-  background-color: #FFF;
-  outline: 1px solid darkcyan;
-  color: darkcyan;
-  font-weight: 700;
+.form__container_all {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+  .form__container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 650px;
+
+    .label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+
+      span {
+        background-color: darkcyan;
+        padding: 1rem;
+        border-radius: 1rem 1rem 0 0;
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #FFF;
+      }
+
+      .input {
+        padding: 1rem;
+        outline: none;
+        border: none;
+        border-left: 1px solid darkcyan;
+        border-bottom: 1px solid darkcyan;
+        border-right: 1px solid darkcyan;
+        border-radius: 0 0 1rem 1rem;
+        font-size: 1.3rem;
+      }
+    }
+
+    .btn__primary {
+      min-width: 8rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: none;
+      outline: none;
+      font-size: 1.5rem;
+      font-weight: 300;
+      background-color: darkcyan;
+      color: #FFF;
+      transition: .3s ease-in;
+      cursor: pointer;
+      letter-spacing: 2px;
+      outline: 1px solid #FFF;
+    }
+    .btn__primary:hover {
+      background-color: #FFF;
+      outline: 1px solid darkcyan;
+      color: darkcyan;
+      font-weight: 700;
+    }
+  }
 }

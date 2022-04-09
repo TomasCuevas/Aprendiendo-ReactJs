@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+
+import { AuthContext } from '../../auth/AuthContext';
 
 import styles from './navbar.module.scss';
 
 export const Navbar = () => {
+  const { authState } = useContext(AuthContext);
 
   return (
     <nav className={styles.container__all}>
@@ -41,6 +44,11 @@ export const Navbar = () => {
             >
               Search
             </NavLink>
+          </li>
+          <li className={styles.list__item}>
+            <span className={styles.auth__name}>
+              { authState.name || 'Invited' }
+            </span>
           </li>
           <li className={styles.list__item}>
             <NavLink 

@@ -36,14 +36,14 @@
           font-weight: 500;
         }
 
-
+        .auth__name {
+          font-size: 1.5rem;
+          color: cyan;
+          font-weight: 300;
+          transition: .2s;
+        }
       }
-      .list__item:nth-child(1) {
-        margin: 0;
-        margin-right: 20px;
-      }
-      .list__item:nth-last-child(1) {
-        margin: 0;
+      .list__item:nth-last-child(2) {
         margin-left: auto;
       }
     }
