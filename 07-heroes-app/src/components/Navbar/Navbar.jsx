@@ -59,22 +59,22 @@ export const Navbar = () => {
           <li className={styles.list__item}>
             {
               (authState.logged)
-              ? (
-                <button 
-                  className={`${styles.nav__link} ${styles.nav__link_login}`} 
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
-              )
-              : (
-                <button 
-                  className={`${styles.nav__link} ${styles.nav__link_login}`} 
-                  onClick={handleLogout}
-                >
-                  Login
-                </button>
-              )
+                ? (
+                  <button 
+                    className={`${styles.nav__link} ${styles.nav__link_login}`} 
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                )
+                : (
+                  <button 
+                    className={`${styles.nav__link} ${styles.nav__link_login}`} 
+                    onClick={handleLogout}
+                  >
+                    Login
+                  </button>
+                )
             }
           </li>
         </ul>
