@@ -42,6 +42,13 @@
           font-weight: 300;
           transition: .2s;
         }
+
+        .nav__link_login {
+          background-color: #0000;
+          border: none;
+          outline: none;
+          cursor: pointer;
+        }
       }
       .list__item:nth-last-child(2) {
         margin-left: auto;
