@@ -26,8 +26,8 @@ export const AppRouter = () => {
           <Route path='*' element={
             <PrivateRoute>
               <DasboardRoutes />
-            </PrivateRoute>}>
-          </Route>
+            </PrivateRoute>
+          } />
 
         </Routes>
 

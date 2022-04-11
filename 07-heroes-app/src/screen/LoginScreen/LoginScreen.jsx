@@ -15,6 +15,7 @@ export const LoginScreen = () => {
   const { authState, login } = useContext(AuthContext)
   const [formValues, handleInputChange] = useForm(initialValue);
   const navigate = useNavigate();
+  const lastPath = localStorage.getItem('lastPath') || '/'; 
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ export const LoginScreen = () => {
 
     login(formValues.name);
 
-    navigate('/', {replace: true});
+    navigate(lastPath, {replace: true});
   }
   
   return (
