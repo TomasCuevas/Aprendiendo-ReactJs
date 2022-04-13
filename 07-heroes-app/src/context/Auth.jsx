@@ -7,7 +7,7 @@ import { AuthContext } from '../auth/AuthContext'
 import { types } from '../types/types';
 
 const init = () => {
-  return JSON.parse(localStorage.getItem('authState')) || { logged: false };
+  return JSON.parse(localStorage.getItem('authState')) || JSON.parse('{"logged": false}');
 }
 
 export const Auth = ({children, test = false, logged = false}) => {

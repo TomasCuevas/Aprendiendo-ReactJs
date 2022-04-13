@@ -7,7 +7,9 @@ import { Auth } from "../../context/Auth"
 
 describe('Pruebas en <PrivateRoute />', () => {
   
-  test('debe de mostrar el compoonente si esta autenticado y guardar localStorage', () => {
+  Storage.prototype.setItem = jest.fn();
+  
+  test('debe de mostrar el componente si esta autenticado y guardar localStorage', () => {
     const component = () => {
       
       return (
@@ -24,5 +26,8 @@ describe('Pruebas en <PrivateRoute />', () => {
     )
     
     expect(wrapper.find('span').exists()).toBe(true);
+    expect(localStorage.setItem).toHaveBeenCalledWith('lastPath', '/');
+    expect(localStorage.setItem).toHaveBeenCalledWith('authState', '{\"logged\":false}');
+    expect(localStorage.setItem).toHaveBeenCalledTimes(2);
   })
 })
