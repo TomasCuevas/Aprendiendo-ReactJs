@@ -1,5 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import { Auth } from '../context/Auth';
 
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
@@ -9,29 +11,25 @@ import { DasboardRoutes } from './DasboardRoutes';
 export const AppRouter = () => {
 
   return (
-    <>
+      <Auth>
+        <Router>
 
-      <Router>
+          {/* <Navbar /> */}
 
-        {/* <Navbar /> */}
+          <Routes>
+            
+            <Route path='/login' element={
+              <PublicRoute>
+                <LoginScreen />
+              </PublicRoute>
+            } />
 
-        <Routes>
-          
-          <Route path='/login' element={
-            <PublicRoute>
-              <LoginScreen />
-            </PublicRoute>
-          } />
+            <Route path='*' element={ <PrivateRoute component={DasboardRoutes} /> } />
 
-          <Route path='*' element={
-            <PrivateRoute>
-              <DasboardRoutes />
-            </PrivateRoute>
-          } />
+          </Routes>
 
-        </Routes>
+        </Router>
 
-      </Router>
-    </>
+      </Auth>
   )
 }

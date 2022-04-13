@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import { AuthContext } from '../auth/AuthContext';
+import { DasboardRoutes } from './DasboardRoutes';
 
-export const PrivateRoute = ({children}) => {
+export const PrivateRoute = ({component: Component}) => {
   const { authState } = useContext(AuthContext);
   const location = useLocation();
 
@@ -15,7 +16,7 @@ export const PrivateRoute = ({children}) => {
       {
         (authState.logged)
           ? (
-            children
+            <Component />
           )
           : (
             <Navigate to='/login' replace />
