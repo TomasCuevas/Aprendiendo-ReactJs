@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { Auth } from '../context/Auth';
+import { AuthContext } from '../auth/AuthContext';
 
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
@@ -9,27 +9,25 @@ import { LoginScreen } from '../screen/LoginScreen/LoginScreen';
 import { DasboardRoutes } from './DasboardRoutes';
 
 export const AppRouter = () => {
+  const { authState, login } = useContext(AuthContext);
 
   return (
-      <Auth>
-        <Router>
+    <Router>
+      <Routes>
+        
+        <Route path='/login' element=
+          {
+            <PublicRoute component={LoginScreen} logged={authState.logged} login={login} />  
+          } 
+        />
 
-          {/* <Navbar /> */}
+        <Route path='*' element=
+          { 
+            <PrivateRoute component={DasboardRoutes} logged={authState.logged} /> 
+          } 
+        />
 
-          <Routes>
-            
-            <Route path='/login' element={
-              <PublicRoute>
-                <LoginScreen />
-              </PublicRoute>
-            } />
-
-            <Route path='*' element={ <PrivateRoute component={DasboardRoutes} /> } />
-
-          </Routes>
-
-        </Router>
-
-      </Auth>
+      </Routes>
+    </Router>
   )
 }

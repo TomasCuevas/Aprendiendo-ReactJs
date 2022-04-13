@@ -10,7 +10,7 @@ const init = () => {
   return JSON.parse(localStorage.getItem('authState')) || JSON.parse('{"logged": false}');
 }
 
-export const Auth = ({children, test = false, logged = false}) => {
+export const Auth = ({children}) => {
   const [authState, dispatch] = useReducer(authReducer, [], init);
 
   const login = (name) => {
@@ -20,32 +20,17 @@ export const Auth = ({children, test = false, logged = false}) => {
         name
       }
     })
-  }
+  };
 
   const logout = () => {
     dispatch({
       type: types.logout
     }) 
-  }
+  };
 
   useEffect(() => {
     localStorage.setItem('authState', JSON.stringify(authState));
-  }, [authState])
-
-  if (test) {
-    return (
-      <AuthContext.Provider value={{
-          authState: {
-            logged
-          },
-          login,
-          logout
-        }}
-      >
-        {children}
-      </AuthContext.Provider>
-    )
-  }
+  }, [authState]);
 
   return (
     <AuthContext.Provider value={{ 
@@ -55,7 +40,7 @@ export const Auth = ({children, test = false, logged = false}) => {
     }}>
       {children}
     </AuthContext.Provider>
-  )
+  );
 }
 
 Auth.propTypes = {

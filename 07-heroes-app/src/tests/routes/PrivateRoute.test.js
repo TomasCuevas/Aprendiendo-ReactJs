@@ -2,7 +2,6 @@ import { mount } from "enzyme"
 import { MemoryRouter } from "react-router-dom"
 
 import { PrivateRoute } from "../../routes/PrivateRoute"
-import { DasboardRoutes } from "../../routes/DasboardRoutes"
 import { Auth } from "../../context/Auth"
 
 describe('Pruebas en <PrivateRoute />', () => {
@@ -15,19 +14,38 @@ describe('Pruebas en <PrivateRoute />', () => {
       return (
         <span>Hello Word</span>
       )
-    }
+    };
     
     const wrapper = mount(
-      <Auth test={true} logged={true}>
+      <Auth>
         <MemoryRouter>
-          <PrivateRoute component={component} />
+          <PrivateRoute component={component} logged={true} />
         </MemoryRouter>
       </Auth>
-    )
+    );
     
     expect(wrapper.find('span').exists()).toBe(true);
     expect(localStorage.setItem).toHaveBeenCalledWith('lastPath', '/');
     expect(localStorage.setItem).toHaveBeenCalledWith('authState', '{\"logged\":false}');
     expect(localStorage.setItem).toHaveBeenCalledTimes(2);
-  })
+  });
+
+  test('debe de bloquear el componente si no esta autenticado', () => {
+    const component = () => {
+      
+      return (
+        <span>Hello Word</span>
+      )
+    };
+    
+    const wrapper = mount(
+      <Auth test={true}>
+        <MemoryRouter>
+          <PrivateRoute component={component} logged={false} />
+        </MemoryRouter>
+      </Auth>
+    );
+    
+    expect(wrapper.find('span').exists()).toBe(false);
+  });
 })

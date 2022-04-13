@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../auth/AuthContext';
@@ -9,10 +9,10 @@ import styles from './loginScreen.module.scss';
 
 const initialValue = {
   name: ''
-}
+};
 
 export const LoginScreen = () => {
-  const { authState, login } = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
   const [formValues, handleInputChange] = useForm(initialValue);
   const navigate = useNavigate();
   const lastPath = localStorage.getItem('lastPath') || '/'; 

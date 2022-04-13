@@ -1,11 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { AuthContext } from '../auth/AuthContext';
-import { DasboardRoutes } from './DasboardRoutes';
-
-export const PrivateRoute = ({component: Component}) => {
-  const { authState } = useContext(AuthContext);
+export const PrivateRoute = ({component: Component, logged = false}) => {  
   const location = useLocation();
 
   const lastPath = `${location.pathname}${location.search || ''}`;
@@ -14,13 +10,9 @@ export const PrivateRoute = ({component: Component}) => {
   return (
     <>
       {
-        (authState.logged)
-          ? (
-            <Component />
-          )
-          : (
-            <Navigate to='/login' replace />
-          )
+        (logged)
+          ? <Component />
+          : <Navigate to='/login' replace />
       }
     </>
   )
