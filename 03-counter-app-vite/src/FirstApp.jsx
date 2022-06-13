@@ -1,9 +1,4 @@
-// const newMessage = {
-//   title: 'First Page',
-//   message: 'This is the first page of the app',
-// }
-
-// const saludo = 'Hola, que tal?'
+import PropTypes from 'prop-types';
 
 export const FirstApp = ({ title, subtitle }) => {
 
@@ -14,4 +9,9 @@ export const FirstApp = ({ title, subtitle }) => {
       <p>{ subtitle }</p>
     </>
   )
+}
+
+FirstApp.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired
 }
