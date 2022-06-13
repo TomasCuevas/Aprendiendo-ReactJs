@@ -5,13 +5,13 @@
 
 // const saludo = 'Hola, que tal?'
 
-export const FirstApp = () => {
+export const FirstApp = ({ title, subtitle }) => {
 
   return (
     <>
-      <h1>Fist Page</h1>
+      <h1>{ title }</h1>
       {/* <code>{ JSON.stringify( newMessage ) }</code> */}
-      <p>Soy un subtitulo</p>
+      <p>{ subtitle }</p>
     </>
   )
 }

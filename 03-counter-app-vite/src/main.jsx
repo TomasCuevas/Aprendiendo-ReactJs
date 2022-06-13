@@ -6,5 +6,5 @@ import { FirstApp } from './FirstApp';
 import './styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <FirstApp />
+  <FirstApp title='Hola Mundo' subtitle='Soy un subtitulo' />
 );
