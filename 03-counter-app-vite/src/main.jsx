@@ -7,5 +7,6 @@ import { CounterApp } from './CounterApp';
 import './styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <CounterApp value={ 15 } />
+  // <CounterApp value={ 15 } />
+  <FirstApp title='Hola Mundo' />
 );
