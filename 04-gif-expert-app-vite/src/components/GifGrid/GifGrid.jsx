@@ -14,6 +14,7 @@ export const GifGrid = ({ category }) => {
   return (
     <section>
       <h3>{ category }</h3>
+      { isLoading && <h4>Loading...</h4> }
 
       <div className='card-grid'>
         {
