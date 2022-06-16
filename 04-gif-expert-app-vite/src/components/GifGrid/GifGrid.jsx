@@ -6,7 +6,7 @@ import { useFetchGifs } from '../../hooks/useFetchGifs';
 /**
  * @components
  */
-import { GifCard } from '../GifCard/GifCard';
+import { GifCard } from '../';
 
 export const GifGrid = ({ category }) => {
   const [gifs, isLoading] = useFetchGifs(category);
