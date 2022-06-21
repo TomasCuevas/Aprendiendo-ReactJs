@@ -18,7 +18,10 @@ export const TodoAdd = ({ onNewTodo }) => {
   }
   
   return (
-    <form onSubmit={ onFormSubmit }>
+    <form 
+      onSubmit={ onFormSubmit }
+      autoComplete="off"
+    >
       <input 
         type="text" 
         placeholder="¿Qué hay que hacer?"

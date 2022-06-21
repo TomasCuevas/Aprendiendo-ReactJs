@@ -3,7 +3,7 @@ import { useReducer } from "react"
 /**
  * @reducer
  */
-import { todoReducer } from "./TodoReducer";
+import { todoReducer } from "./todoReducer";
 
 /**
  * @components
@@ -28,6 +28,12 @@ export const TodoApp = () => {
   const [todos, dispatch] = useReducer( todoReducer, initialState )
 
   const onNewTodo = ( newTodo ) => {
+    const action = {
+      type: 'TODO: add todo',
+      payload: newTodo
+    }
+
+    dispatch( action );
     console.log(newTodo);
   }
 
