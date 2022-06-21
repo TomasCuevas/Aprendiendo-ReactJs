@@ -12,10 +12,15 @@ import { AboutPage } from './AboutPage';
  */
 import { Navbar } from './Navbar';
 
+/**
+ * @provider
+ */
+import { UserProvider } from './context/UserProvider';
+
 export const MainApp = () => {
 
   return (
-    <>
+    <UserProvider>
       <h1>Main App</h1>
       <Navbar />
       <hr />
@@ -29,6 +34,6 @@ export const MainApp = () => {
         
         <Route path='/*' element={ <Navigate to='/' /> } />
       </Routes>
-    </>
+    </UserProvider>
   )
 }
