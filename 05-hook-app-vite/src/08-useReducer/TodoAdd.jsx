@@ -9,7 +9,7 @@ export const TodoAdd = ({ onNewTodo }) => {
 
     const newTodo = {
       id: new Date().getTime(),
-      todo,
+      describe: todo,
       done: false
     }
 
