@@ -10,7 +10,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      <h1>Login</h1>
+      <h1>LoginPage</h1>
       <hr />
 
       <pre aria-label="pre-login">

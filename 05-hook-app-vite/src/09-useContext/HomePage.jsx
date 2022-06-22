@@ -10,7 +10,7 @@ export const HomePage = () => {
 
   return (
     <>
-      { (user?.name) ? <h1>Home <small>| {user.name}</small></h1> : <h1>Home</h1> }
+      { (user?.name) ? <h1>Home <small>| {user.name}</small></h1> : <h1>HomePage</h1> }
       <hr />
 
       <pre aria-label="pre">
