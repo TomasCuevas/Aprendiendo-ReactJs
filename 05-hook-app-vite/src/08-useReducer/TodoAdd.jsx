@@ -29,6 +29,7 @@ export const TodoAdd = ({ onNewTodo }) => {
         name="todo"
         value={ todo }
         onChange={ onInputChange }
+        aria-label="inputAdd"
       />
       <button
         type="submit"
