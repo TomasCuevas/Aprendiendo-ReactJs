@@ -49,8 +49,10 @@ describe('Pruebas en el reducer todoReducer', () => {
     }
 
     const newState = todoReducer( initialState, action );
-
     expect( newState[0].done ).toBe( true );
+
+    const newState2 = todoReducer( newState, action );
+    expect( newState2[0].done ).toBe( false );
   });
 
 })
