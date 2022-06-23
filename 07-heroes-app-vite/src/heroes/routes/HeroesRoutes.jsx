@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 /**
  * @components
@@ -22,7 +22,7 @@ export const HeroesRoutes = () => {
           <Route path='/marvel' element={ <MarvelPage /> } />
           <Route path='/dc' element={ <DcPage /> } />
           <Route path='/search' element={ <SearchPage /> } />
-          <Route path='/hero' element={ <HeroPage /> } />
+          <Route path='/hero/:id' element={ <HeroPage /> } />
 
         </Routes>
       </div>
