@@ -17,7 +17,6 @@ export const SearchPage = () => {
 
   const onSearchSubmit = ( e ) => {
     e.preventDefault();
-    if ( searchText.trim().length <= 1 ) return;
 
     navigate(`?q=${searchText}`);
   } 
@@ -56,18 +55,28 @@ export const SearchPage = () => {
           <h4>Result</h4>
           <hr />
 
-          <div className="alert alert-primary">
-            Search a hero
-          </div>
-
-          <div className="alert alert-danger">
-            Not hero with <b>{ q }</b>
-          </div>
+          {
+            (q.length <= 1) && (
+              <div className="alert alert-primary">
+                Search a hero
+              </div>
+            )
+          }
 
           {
-            heroes.map((hero) => (
-              <HeroCard key={ hero.id } { ...hero } />
-            ))
+            (q.length > 0 && heroes.length === 0) && (
+              <div className="alert alert-danger">
+                Not hero with <b>{ q }</b>
+              </div>
+            )
+          }
+
+          {
+            ( heroes.length > 0 ) && (
+              heroes.map((hero) => (
+                <HeroCard key={ hero.id } { ...hero } />
+              ))
+            )
           }
 
         </div>
