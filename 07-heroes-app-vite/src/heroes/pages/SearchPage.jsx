@@ -43,6 +43,7 @@ export const SearchPage = () => {
             />
 
             <button 
+              aria-label="search-button"
               type="submit"
               className="btn btn-outline-primary mt-2"
             >
