@@ -17,20 +17,24 @@ export const AuthProvider = ({ children }) => {
 
   const login = ( name ) => {
     const user = { id: 123, name };
-    
-    const action = {
-      type: types.login,
-      payload: user
-    }
+    const action = { type: types.login, payload: user }
 
     dispatch( action );
     localStorage.setItem( 'user', JSON.stringify(user) );
   }
 
+  const logout = () => {
+    const action = { type: types.logout };
+    
+    dispatch( action )
+    localStorage.removeItem('user');
+  }
+
   return (
     <AuthContext.Provider value={{
       ...authState,
-      login
+      login,
+      logout
     }}>
       { children }
     </AuthContext.Provider>
