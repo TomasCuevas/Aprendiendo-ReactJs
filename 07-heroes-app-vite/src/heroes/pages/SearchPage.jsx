@@ -59,7 +59,7 @@ export const SearchPage = () => {
 
           {
             (q.length <= 1) && (
-              <div className="alert alert-primary">
+              <div aria-label="not-search" className="alert alert-primary">
                 Search a hero
               </div>
             )
@@ -67,7 +67,7 @@ export const SearchPage = () => {
 
           {
             (q.length > 0 && heroes.length === 0) && (
-              <div className="alert alert-danger">
+              <div aria-label="error-search" className="alert alert-danger">
                 Not hero with <b>{ q }</b>
               </div>
             )

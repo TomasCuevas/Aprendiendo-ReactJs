@@ -43,6 +43,7 @@ exports[`Pruebas en el <SearchPage /> debe de mostrarse correctamente con valore
       </h4>
       <hr />
       <div
+        aria-label="not-search"
         class="alert alert-primary"
       >
         Search a hero
