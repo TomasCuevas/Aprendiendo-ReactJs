@@ -9,7 +9,7 @@ import { LoginPage } from '../auth';
 /**
  * @routers
  */
-import { PrivateRoutes } from './PrivateRouter';
+import { PrivateRouter } from './PrivateRouter';
 import { PublicRouter } from './PublicRouter';
 
 export const AppRouter = () => {
@@ -25,9 +25,9 @@ export const AppRouter = () => {
         } />
 
         <Route path='/*' element={
-          <PrivateRoutes>
+          <PrivateRouter>
             <HeroesRoutes />
-          </PrivateRoutes>
+          </PrivateRouter>
         } />
     
       </Routes>
