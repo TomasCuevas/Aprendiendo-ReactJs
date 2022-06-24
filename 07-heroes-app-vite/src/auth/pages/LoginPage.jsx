@@ -5,10 +5,12 @@ import { useNavigate } from 'react-router-dom';
 export const LoginPage = () => {
   const navigate = useNavigate();
   const { login } = useContext( AuthContext );
-
+  
   const handleLogin = () => {
+    const lasthPath = JSON.parse( localStorage.getItem('lastPath') ) || '/marvel';
+    
     login( 'Tomás Cuevas' );
-    navigate('/marvel', {
+    navigate(lasthPath, {
       replace: true
     });
   }
