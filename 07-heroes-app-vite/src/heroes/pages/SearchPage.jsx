@@ -33,6 +33,7 @@ export const SearchPage = () => {
 
           <form onSubmit={ onSearchSubmit }>
             <input 
+              aria-label="search-input"
               type="text" 
               placeholder="Search a hero"
               className="form-control"
