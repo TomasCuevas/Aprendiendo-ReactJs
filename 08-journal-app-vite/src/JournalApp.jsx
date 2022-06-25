@@ -1,8 +1,10 @@
+import { AppRouter } from "./router/AppRoutes"
+
 export const JournalApp = () => {
 
   return (
     <>
-      <h1>Hola Mundo</h1>
+      <AppRouter />
     </>
   )
 }
