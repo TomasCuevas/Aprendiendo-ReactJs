@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { build } from "vite";
 
 export const todosApi = createApi({
   reducerPath: "todos",
