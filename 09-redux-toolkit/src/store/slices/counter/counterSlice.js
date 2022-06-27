@@ -9,7 +9,13 @@ export const counterSlice = createSlice({
     increment: (state) => {
       state.counter += 1;
     },
+    incrementBy: (state, action) => {
+      state.counter += action.payload;
+    },
+    decrement: (state) => {
+      state.counter -= 1;
+    },
   },
 });
 
-export const { increment, decrement } = counterSlice.actions;
+export const { increment, incrementBy, decrement } = counterSlice.actions;
