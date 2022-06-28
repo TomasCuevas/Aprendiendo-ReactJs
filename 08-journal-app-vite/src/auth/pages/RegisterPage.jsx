@@ -16,22 +16,28 @@ const formValidations = {
     (value) => value.length >= 6,
     "El password debe tener minimo 6 caracteres.",
   ],
-  name: [
+  displayName: [
     (value) => value.length >= 2,
     "El nombre debe tener minimo 2 caracteres.",
   ],
 };
 
 export const RegisterPage = () => {
-  const { formState, displayName, email, password, onInputChange } = useForm(
-    formValues,
-    formValidations
-  );
+  const {
+    formState,
+    displayName,
+    email,
+    password,
+    onInputChange,
+    displayNameValid,
+  } = useForm(formValues, formValidations);
 
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(formState);
   };
+
+  console.log(displayNameValid);
 
   return (
     <AuthLayout formTitle="Register">
