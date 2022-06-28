@@ -1,12 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
-import { JournalApp } from './JournalApp'
-import './styles.css'
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <JournalApp />
-  </BrowserRouter>
-)
+import { JournalApp } from "./JournalApp";
+import "./styles.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <JournalApp />
+    </BrowserRouter>
+  </Provider>
+);
