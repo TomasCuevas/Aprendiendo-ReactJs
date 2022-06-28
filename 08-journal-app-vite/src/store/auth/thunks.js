@@ -34,6 +34,9 @@ export const startRegisterUserWithEmailPassword = ({
       password,
     });
 
-    console.log(result);
+    const { ok, errorMessage } = result;
+    if (!ok) return dispatch(logout(errorMessage));
+
+    dispatch(login(result));
   };
 };
