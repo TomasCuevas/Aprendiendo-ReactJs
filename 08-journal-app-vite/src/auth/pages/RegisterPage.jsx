@@ -4,12 +4,29 @@ import { Grid, Typography, TextField, Button, Link } from "@mui/material";
 import { useForm } from "../../hooks/useForm";
 import { AuthLayout } from "../layout/AuthLayout";
 
+const formValues = {
+  displayName: "",
+  email: "",
+  password: "",
+};
+
+const formValidations = {
+  email: [(value) => value.includes("@"), 'El correo debe de tener un "@"'],
+  password: [
+    (value) => value.length >= 6,
+    "El password debe tener minimo 6 caracteres.",
+  ],
+  name: [
+    (value) => value.length >= 2,
+    "El nombre debe tener minimo 2 caracteres.",
+  ],
+};
+
 export const RegisterPage = () => {
-  const { formState, displayName, email, password, onInputChange } = useForm({
-    displayName: "",
-    email: "",
-    password: "",
-  });
+  const { formState, displayName, email, password, onInputChange } = useForm(
+    formValues,
+    formValidations
+  );
 
   const onSubmit = (event) => {
     event.preventDefault();
