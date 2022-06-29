@@ -6,11 +6,11 @@ import { TurnedInNot } from '@mui/icons-material';
 
 import { setActiveNote } from '../../store/journal/journalSlice';
 
-export const SidebarItem = ({ title, uid, body, date, imageUrls }) => {
+export const SidebarItem = ({ title, id, body, date, imageUrls }) => {
   const dispatch = useDispatch();
 
   const onActiveNote = () => {
-    dispatch(setActiveNote({ title, uid, body, date, imageUrls }));
+    dispatch(setActiveNote({ title, id, body, date, imageUrls }));
   };
 
   return (
@@ -30,7 +30,7 @@ export const SidebarItem = ({ title, uid, body, date, imageUrls }) => {
 
 SidebarItem.propTypes = {
   title: PropTypes.string,
-  uid: PropTypes.string,
+  id: PropTypes.string,
   body: PropTypes.string,
   date: PropTypes.number,
   imageUrls: PropTypes.array,
