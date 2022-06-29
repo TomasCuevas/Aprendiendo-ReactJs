@@ -1,18 +1,27 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import { ListItem, ListItemButton, ListItemIcon, Grid, ListItemText } from '@mui/material';
 import { TurnedInNot } from '@mui/icons-material';
 
-export const SidebarItem = ({ note }) => {
+import { setActiveNote } from '../../store/journal/journalSlice';
+
+export const SidebarItem = ({ title, uid, body, date, imageUrls }) => {
+  const dispatch = useDispatch();
+
+  const onActiveNote = () => {
+    dispatch(setActiveNote({ title, uid, body, date, imageUrls }));
+  };
+
   return (
-    <ListItem disablePadding>
+    <ListItem onClick={onActiveNote} disablePadding>
       <ListItemButton>
         <ListItemIcon>
           <TurnedInNot />
         </ListItemIcon>
         <Grid container>
-          <ListItemText primary={note.title} />
-          <ListItemText secondary={note.body} />
+          <ListItemText primary={title} />
+          <ListItemText secondary={body} />
         </Grid>
       </ListItemButton>
     </ListItem>
@@ -20,5 +29,9 @@ export const SidebarItem = ({ note }) => {
 };
 
 SidebarItem.propTypes = {
-  note: PropTypes.object,
+  title: PropTypes.string,
+  uid: PropTypes.string,
+  body: PropTypes.string,
+  date: PropTypes.number,
+  imageUrls: PropTypes.array,
 };
