@@ -32,16 +32,27 @@ export const journalSlice = createSlice({
       state.isSaving = false;
     },
     setSaving: (state, action) => {
-      state.isSaving = true;
       state.messageSaved = '';
+      state.isSaving = true;
     },
     updateNote: (state, { payload }) => {
-      state.isSaving = false;
       state.notes = state.notes.map((note) => (note.id === payload.id ? payload : note));
       state.messageSaved = 'Nota actualizada correctamente.';
+      state.isSaving = false;
+    },
+    setPhotosToActiveNote: (state, { payload }) => {
+      state.active.imageUrls = [...state.active.imageUrls, ...payload];
+      state.isSaving = false;
     },
   },
 });
 
-export const { savingNewNote, addNewEmptyNote, setActiveNote, setNotes, setSaving, updateNote } =
-  journalSlice.actions;
+export const {
+  addNewEmptyNote,
+  savingNewNote,
+  setActiveNote,
+  setNotes,
+  setPhotosToActiveNote,
+  setSaving,
+  updateNote,
+} = journalSlice.actions;
