@@ -19,9 +19,10 @@ export const startNewNote = () => {
     const { uid } = getState().auth;
 
     const newNote = {
-      title: 'Primera Nota',
-      body: 'Cuerpo de la nota',
+      title: '',
+      body: '',
       date: new Date().getTime(),
+      imageUrls: [],
     };
 
     const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`));
