@@ -7,6 +7,7 @@ import { TurnedInNot } from '@mui/icons-material';
 
 import { setActiveNote } from '../../store/journal/journalSlice';
 
+// eslint-disable-next-line react/prop-types
 export const SidebarItem = ({ title = '', id, body = '', date, imageUrls }) => {
   const dispatch = useDispatch();
   const newTitle = useMemo(() => {
@@ -40,5 +41,4 @@ SidebarItem.propTypes = {
   id: PropTypes.string,
   body: PropTypes.string,
   date: PropTypes.number,
-  imageUrls: PropTypes.array,
 };
