@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
-import { SaveOutlined, UploadOutlined } from '@mui/icons-material';
+import { DeleteOutline, SaveOutlined, UploadOutlined } from '@mui/icons-material';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 
@@ -11,7 +11,11 @@ import { ImageGalery } from '../components';
 import { useForm } from '../../hooks/useForm';
 
 import { setActiveNote } from '../../store/journal/journalSlice';
-import { startUpdateNote, startUploadingFiles } from '../../store/journal/thunks';
+import {
+  startDeletingNote,
+  startUpdateNote,
+  startUploadingFiles,
+} from '../../store/journal/thunks';
 
 export const NoteView = () => {
   const dispatch = useDispatch();
@@ -40,6 +44,10 @@ export const NoteView = () => {
     if (target.files.length === 0) return;
 
     dispatch(startUploadingFiles(target.files));
+  };
+
+  const onDelete = () => {
+    dispatch(startDeletingNote());
   };
 
   return (
@@ -104,6 +112,12 @@ export const NoteView = () => {
           sx={{ border: 'none', mb: 1 }}
           minRows={3}
         />
+      </Grid>
+      <Grid container justifyContent="end">
+        <Button onClick={onDelete} sx={{ mt: 2 }} color="error">
+          <DeleteOutline />
+          Borrar
+        </Button>
       </Grid>
 
       <ImageGalery images={note.imageUrls} />
