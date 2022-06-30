@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
@@ -6,8 +7,14 @@ import { TurnedInNot } from '@mui/icons-material';
 
 import { setActiveNote } from '../../store/journal/journalSlice';
 
-export const SidebarItem = ({ title, id, body, date, imageUrls }) => {
+export const SidebarItem = ({ title = '', id, body = '', date, imageUrls }) => {
   const dispatch = useDispatch();
+  const newTitle = useMemo(() => {
+    return title.length > 30 ? title.slice(0, 30) + '...' : title;
+  }, [title]);
+  const newBody = useMemo(() => {
+    return body.length > 60 ? body.slice(0, 60) + '...' : body;
+  }, [body]);
 
   const onActiveNote = () => {
     dispatch(setActiveNote({ title, id, body, date, imageUrls }));
@@ -20,8 +27,8 @@ export const SidebarItem = ({ title, id, body, date, imageUrls }) => {
           <TurnedInNot />
         </ListItemIcon>
         <Grid container>
-          <ListItemText primary={title} />
-          <ListItemText secondary={body} />
+          <ListItemText primary={newTitle} />
+          <ListItemText secondary={newBody} />
         </Grid>
       </ListItemButton>
     </ListItem>
