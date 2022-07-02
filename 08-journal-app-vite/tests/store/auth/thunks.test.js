@@ -18,7 +18,6 @@ import { demoUser } from '../../fixtures/authFixtures';
 
 jest.mock('../../../src/firebase/providers');
 
-/* eslint-disable no-undef */
 describe('Pruebas en authThunks', () => {
   const dispatch = jest.fn();
 
