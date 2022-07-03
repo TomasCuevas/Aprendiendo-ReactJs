@@ -7,6 +7,12 @@ import { LoginPage } from '../../../src/auth/pages/LoginPage';
 import { authSlice } from '../../../src/store/auth/authSlice';
 import { notAuthenticatedState } from '../../fixtures/authFixtures';
 
+const mockStartGoogleSignIn = jest.fn();
+
+jest.mock('../../../src/store/auth/thunks', () => ({
+  startGoogleSignin: () => mockStartGoogleSignIn,
+}));
+
 const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
@@ -40,5 +46,7 @@ describe('Pruebas en el componente <LoginPage />', () => {
 
     const googleBtn = screen.getByLabelText('google-btn');
     fireEvent.click(googleBtn);
+
+    expect(mockStartGoogleSignIn).toHaveBeenCalled();
   });
 });
