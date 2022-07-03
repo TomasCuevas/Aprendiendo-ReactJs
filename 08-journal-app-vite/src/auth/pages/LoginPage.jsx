@@ -24,6 +24,9 @@ export const LoginPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+
+    console.log({ email, password });
+
     dispatch(startLoginWithEmailPassword(formState));
   };
 
@@ -33,7 +36,7 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout formTitle="Login">
-      <form onSubmit={onSubmit}>
+      <form aria-label="form-login" onSubmit={onSubmit}>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
@@ -54,6 +57,9 @@ export const LoginPage = () => {
               fullWidth
               value={password}
               name="password"
+              inputProps={{
+                'aria-label': 'password-input',
+              }}
               onChange={onInputChange}
             />
           </Grid>
