@@ -8,6 +8,8 @@ import { Navbar, CalendarEventBox, CalendarModal } from '../';
 
 import { localizer, getMessagesES } from '../../helpers';
 
+import { useUiStore } from '../../hooks';
+
 const events = [
   {
     title: 'Cumpleaños del Jefe',
@@ -22,6 +24,7 @@ const events = [
 ];
 
 export const CalendarPage = () => {
+  const { openDateModal } = useUiStore();
   const [lastView] = useState(localStorage.getItem('lastview') || 'week');
 
   const eventStylesGetter = (event, start, end, isSelected) => {
@@ -38,7 +41,7 @@ export const CalendarPage = () => {
   };
 
   const onDoubleClick = (event) => {
-    console.log({ doubleClick: event });
+    openDateModal();
   };
 
   const onSelect = (event) => {
