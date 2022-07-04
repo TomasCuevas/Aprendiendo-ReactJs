@@ -1,11 +1,12 @@
+import { useState } from 'react';
+
 import { Calendar } from 'react-big-calendar';
 import { addHours } from 'date-fns';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-import { Navbar, CalendarEventBox } from '../';
+import { Navbar, CalendarEventBox, CalendarModal } from '../';
 
 import { localizer, getMessagesES } from '../../helpers';
-import { useState } from 'react';
 
 const events = [
   {
@@ -21,7 +22,7 @@ const events = [
 ];
 
 export const CalendarPage = () => {
-  const [lastView, setLastView] = useState(localStorage.getItem('lastview') || 'week');
+  const [lastView] = useState(localStorage.getItem('lastview') || 'week');
 
   const eventStylesGetter = (event, start, end, isSelected) => {
     const style = {
@@ -69,6 +70,8 @@ export const CalendarPage = () => {
         onSelectEvent={onSelect}
         onView={onViewChanged}
       />
+
+      <CalendarModal />
     </>
   );
 };
