@@ -18,15 +18,24 @@ const loginUser = (req = request, res = response) => {
 
 const createUser = async (req = request, res = response) => {
   try {
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = new User(req.body);
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({
+        ok: false,
+        msg: "El email ya ha sido utilizado.",
+      });
+    }
+
+    user = new User(req.body);
     await user.save();
 
     res.status(201).json({
       ok: true,
       msg: "register",
-      user,
+      uid: user._id,
+      name: user.name,
     });
   } catch (err) {
     res.status(500).json({
