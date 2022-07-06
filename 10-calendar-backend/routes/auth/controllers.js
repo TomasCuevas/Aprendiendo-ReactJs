@@ -6,15 +6,39 @@ const bcryptjs = require("bcryptjs");
  */
 const User = require("../../database/models/UserModel");
 
-const loginUser = (req = request, res = response) => {
-  const { email, password } = req.body;
+const loginUser = async (req = request, res = response) => {
+  try {
+    const { email, password } = req.body;
 
-  res.json({
-    ok: true,
-    msg: "login",
-    email,
-    password,
-  });
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        ok: false,
+        msg: "El usuario no existe. -email",
+      });
+    }
+
+    const verifyPassword = bcryptjs.compareSync(password, user.password);
+    if (!verifyPassword) {
+      return res.status(400).json({
+        ok: false,
+        msg: "El usuario no existe. -password",
+      });
+    }
+
+    res.json({
+      ok: true,
+      msg: "login",
+      uid: user._id,
+      name: user.name,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Contacte a un administrador.",
+    });
+  }
 };
 
 const createUser = async (req = request, res = response) => {
@@ -42,7 +66,8 @@ const createUser = async (req = request, res = response) => {
       uid: user._id,
       name: user.name,
     });
-  } catch (err) {
+  } catch (error) {
+    console.log(error);
     res.status(500).json({
       ok: false,
       msg: "Contacte a un administrador.",
