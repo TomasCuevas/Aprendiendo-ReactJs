@@ -10,6 +10,7 @@ const router = Router();
  * @middlewares
  */
 const { fieldsValidation } = require("../../middleware/fieldsValidation");
+const { JWTValidation } = require("../../middleware/JWTValidation");
 
 /**
  * @controllers
@@ -44,6 +45,6 @@ router.post(
   createUser
 );
 
-router.get("/refresh", refreshToken);
+router.get("/refresh", [JWTValidation], refreshToken);
 
 module.exports = router;

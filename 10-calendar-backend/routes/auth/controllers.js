@@ -86,11 +86,24 @@ const createUser = async (req = request, res = response) => {
   }
 };
 
-const refreshToken = (req = request, res = response) => {
-  res.json({
-    ok: true,
-    msg: "refresh",
-  });
+const refreshToken = async (req = request, res = response) => {
+  try {
+    const { uid, name } = req;
+
+    const token = await generateJWT(uid, name);
+
+    res.json({
+      ok: true,
+      msg: "refresh",
+      token,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({
+      ok: false,
+      msg: "Contacte a un administrador.",
+    });
+  }
 };
 
 module.exports = {
