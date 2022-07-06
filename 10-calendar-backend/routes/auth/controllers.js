@@ -1,5 +1,10 @@
 const { request, response } = require("express");
 
+/**
+ * @models
+ */
+const User = require("../../database/models/UserModel");
+
 const loginUser = (req = request, res = response) => {
   const { email, password } = req.body;
 
@@ -11,16 +16,24 @@ const loginUser = (req = request, res = response) => {
   });
 };
 
-const createUser = (req = request, res = response) => {
-  const { name, email, password } = req.body;
+const createUser = async (req = request, res = response) => {
+  try {
+    const { name, email, password } = req.body;
 
-  res.status(201).json({
-    ok: true,
-    msg: "register",
-    name,
-    email,
-    password,
-  });
+    const user = new User(req.body);
+    await user.save();
+
+    res.status(201).json({
+      ok: true,
+      msg: "register",
+      user,
+    });
+  } catch (err) {
+    res.status(500).json({
+      ok: false,
+      msg: "Contacte a un administrador.",
+    });
+  }
 };
 
 const refreshToken = (req = request, res = response) => {
