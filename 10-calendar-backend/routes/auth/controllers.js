@@ -14,13 +14,6 @@ const loginUser = (req = request, res = response) => {
 const createUser = (req = request, res = response) => {
   const { name, email, password } = req.body;
 
-  if (name.length < 5) {
-    return res.json({
-      ok: false,
-      msg: "El nombre debe tener al menos 5 letras.",
-    });
-  }
-
   res.status(201).json({
     ok: true,
     msg: "register",
