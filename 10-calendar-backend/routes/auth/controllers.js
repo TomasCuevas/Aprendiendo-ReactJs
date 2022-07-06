@@ -21,7 +21,7 @@ const createUser = (req = request, res = response) => {
     });
   }
 
-  res.json({
+  res.status(201).json({
     ok: true,
     msg: "register",
     name,
