@@ -6,6 +6,11 @@ const bcryptjs = require("bcryptjs");
  */
 const User = require("../../database/models/UserModel");
 
+/**
+ * @helpers
+ */
+const generateJWT = require("../../helpers/jwt");
+
 const loginUser = async (req = request, res = response) => {
   try {
     const { email, password } = req.body;
@@ -26,9 +31,12 @@ const loginUser = async (req = request, res = response) => {
       });
     }
 
+    const token = await generateJWT(user._id, user.name);
+
     res.json({
       ok: true,
       msg: "login",
+      token,
       uid: user._id,
       name: user.name,
     });
@@ -60,9 +68,12 @@ const createUser = async (req = request, res = response) => {
 
     await user.save();
 
+    const token = await generateJWT(user._id, user.name);
+
     res.status(201).json({
       ok: true,
       msg: "register",
+      token,
       uid: user._id,
       name: user.name,
     });
