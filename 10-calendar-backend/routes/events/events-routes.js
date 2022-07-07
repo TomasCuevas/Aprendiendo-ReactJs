@@ -8,8 +8,14 @@ const { check } = require("express-validator");
 const router = Router();
 
 /**
+ * @helpers
+ */
+const isDate = require("../../helpers/isDate");
+
+/**
  * @middleware
  */
+const { fieldsValidation } = require("../../middleware/fieldsValidation");
 const { JWTValidation } = require("../../middleware/JWTValidation");
 
 /**
@@ -25,11 +31,20 @@ const {
 /**
  * @routes
  */
-// router.use(JWTValidation);
+router.use(JWTValidation);
 
 router.get("/", [JWTValidation], getEvents);
 
-router.post("/", [JWTValidation], createEvent);
+router.post(
+  "/",
+  [
+    check("title", "El titulo es requerido.").not().isEmpty(),
+    check("start", "La fecha de inicio es obligatoria.").custom(isDate),
+    check("end", "La fecha de finalizacion es obligatoria.").custom(isDate),
+    fieldsValidation,
+  ],
+  createEvent
+);
 
 router.put("/:id", [JWTValidation], updateEvent);
 
