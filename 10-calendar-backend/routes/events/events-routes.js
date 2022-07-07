@@ -38,6 +38,7 @@ router.get("/", [JWTValidation], getEvents);
 router.post(
   "/",
   [
+    JWTValidation,
     check("title", "El titulo es requerido.").not().isEmpty(),
     check("start", "La fecha de inicio es obligatoria.").custom(isDate),
     check("end", "La fecha de finalizacion es obligatoria.").custom(isDate),
