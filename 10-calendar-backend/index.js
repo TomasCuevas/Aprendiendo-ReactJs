@@ -21,7 +21,8 @@ app.use(express.json());
 /**
  * @routes
  */
-app.use("/api/auth", require("./routes/auth/auth"));
+app.use("/api/auth", require("./routes/auth/auth-routes"));
+app.use("/api/events", require("./routes/events/events-routes"));
 
 /**
  * @iniciarServidor

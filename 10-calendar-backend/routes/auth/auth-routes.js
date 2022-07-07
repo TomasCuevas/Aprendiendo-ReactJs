@@ -15,7 +15,7 @@ const { JWTValidation } = require("../../middleware/JWTValidation");
 /**
  * @controllers
  */
-const { createUser, loginUser, refreshToken } = require("./controllers");
+const { createUser, loginUser, refreshToken } = require("./auth-controllers");
 
 /**
  * @routes
