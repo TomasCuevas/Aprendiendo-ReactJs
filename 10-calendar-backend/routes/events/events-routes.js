@@ -33,12 +33,11 @@ const {
  */
 router.use(JWTValidation);
 
-router.get("/", [JWTValidation], getEvents);
+router.get("/", getEvents);
 
 router.post(
   "/",
   [
-    JWTValidation,
     check("title", "El titulo es requerido.").not().isEmpty(),
     check("start", "La fecha de inicio es obligatoria.").custom(isDate),
     check("end", "La fecha de finalizacion es obligatoria.").custom(isDate),
@@ -47,7 +46,16 @@ router.post(
   createEvent
 );
 
-router.put("/:id", [JWTValidation], updateEvent);
+router.put(
+  "/:id",
+  [
+    check("title", "El titulo es requerido.").not().isEmpty(),
+    check("start", "La fecha de inicio es obligatoria.").custom(isDate),
+    check("end", "La fecha de finalizacion es obligatoria.").custom(isDate),
+    fieldsValidation,
+  ],
+  updateEvent
+);
 
 router.delete("/:id", [JWTValidation], deleteEvent);
 
