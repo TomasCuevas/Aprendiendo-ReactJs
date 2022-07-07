@@ -17,6 +17,7 @@ const isDate = require("../../helpers/isDate");
  */
 const { fieldsValidation } = require("../../middleware/fieldsValidation");
 const { JWTValidation } = require("../../middleware/JWTValidation");
+router.use(JWTValidation);
 
 /**
  * @controllers
@@ -31,7 +32,6 @@ const {
 /**
  * @routes
  */
-router.use(JWTValidation);
 
 router.get("/", getEvents);
 
@@ -57,6 +57,6 @@ router.put(
   updateEvent
 );
 
-router.delete("/:id", [JWTValidation], deleteEvent);
+router.delete("/:id", deleteEvent);
 
 module.exports = router;
