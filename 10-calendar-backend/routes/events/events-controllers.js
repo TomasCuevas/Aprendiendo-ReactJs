@@ -6,10 +6,23 @@ const { request, response } = require("express");
 const Event = require("../../database/models/EventModel");
 
 const getEvents = async (req = request, res = response) => {
-  res.json({
-    ok: true,
-    msg: "getEvents",
-  });
+  try {
+    const events = await Event.find().populate("user", {
+      name: true,
+      _id: true,
+    });
+
+    res.status(200).json({
+      ok: true,
+      events,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Contacte con un administrador.",
+    });
+  }
 };
 
 const createEvent = async (req = request, res = response) => {
@@ -23,9 +36,10 @@ const createEvent = async (req = request, res = response) => {
       eventSaved,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "contacte con un administrador.",
+      msg: "Contacte con un administrador.",
     });
   }
 };
