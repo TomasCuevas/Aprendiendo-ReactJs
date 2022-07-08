@@ -6,7 +6,7 @@ const fieldsValidation = (req = request, res = response, next) => {
 
   if (!errors.isEmpty()) {
     return res.status(400).json({
-      message: errors.errors,
+      msg: errors.errors[0].msg,
     });
   }
 

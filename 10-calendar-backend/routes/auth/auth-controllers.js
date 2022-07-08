@@ -96,6 +96,8 @@ const refreshToken = async (req = request, res = response) => {
       ok: true,
       msg: "refresh",
       token,
+      uid,
+      name,
     });
   } catch (error) {
     console.log(error);
