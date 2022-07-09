@@ -7,16 +7,19 @@ import { Navbar, CalendarEventBox, CalendarModal, FabAddNew, FabAddDelete } from
 
 import { localizer, getMessagesES } from '../../helpers';
 
-import { useUiStore, useCalendarStore } from '../../hooks';
+import { useUiStore, useCalendarStore, useAuthStore } from '../../hooks';
 
 export const CalendarPage = () => {
+  const { user } = useAuthStore();
   const { openDateModal } = useUiStore();
   const { events, setActiveEvent, startLoadingEvents } = useCalendarStore();
   const [lastView] = useState(localStorage.getItem('lastview') || 'week');
 
   const eventStylesGetter = (event, start, end, isSelected) => {
+    const isMyEvent = user._id === event.user._id;
+
     const style = {
-      backgroundColor: '#347CF7',
+      backgroundColor: isMyEvent ? '#347CF7' : '#465660',
       borderRadius: '0px',
       opacity: 0.8,
       color: 'white',

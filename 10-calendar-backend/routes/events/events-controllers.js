@@ -28,7 +28,7 @@ const getEvents = async (req = request, res = response) => {
 const createEvent = async (req = request, res = response) => {
   try {
     const newEvent = await Event(req.body);
-    newEvent.user = req.uid;
+    newEvent.user = req._id;
     const eventSaved = await newEvent.save();
 
     res.status(201).json({
@@ -46,7 +46,7 @@ const createEvent = async (req = request, res = response) => {
 
 const updateEvent = async (req = request, res = response) => {
   try {
-    const userId = req.uid;
+    const userId = req._id;
     const eventId = req.params.id;
 
     const event = await Event.findById(req.params.id);
@@ -88,7 +88,7 @@ const updateEvent = async (req = request, res = response) => {
 
 const deleteEvent = async (req = request, res = response) => {
   try {
-    const userId = req.uid;
+    const userId = req._id;
     const eventId = req.params.id;
 
     const event = await Event.findById(eventId);

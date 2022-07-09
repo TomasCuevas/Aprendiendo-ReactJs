@@ -37,7 +37,7 @@ const loginUser = async (req = request, res = response) => {
       ok: true,
       msg: "login",
       token,
-      uid: user._id,
+      _id: user._id,
       name: user.name,
     });
   } catch (error) {
@@ -74,7 +74,7 @@ const createUser = async (req = request, res = response) => {
       ok: true,
       msg: "register",
       token,
-      uid: user._id,
+      _id: user._id,
       name: user.name,
     });
   } catch (error) {
@@ -88,15 +88,15 @@ const createUser = async (req = request, res = response) => {
 
 const refreshToken = async (req = request, res = response) => {
   try {
-    const { uid, name } = req;
+    const { _id, name } = req;
 
-    const token = await generateJWT(uid, name);
+    const token = await generateJWT(_id, name);
 
     res.json({
       ok: true,
       msg: "refresh",
       token,
-      uid,
+      _id,
       name,
     });
   } catch (error) {

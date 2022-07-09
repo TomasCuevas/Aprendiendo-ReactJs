@@ -14,7 +14,7 @@ const JWTValidation = (req = request, res = response, next) => {
   try {
     const payload = jwt.verify(token, process.env.SECRET_JWT_SEED);
 
-    req.uid = payload.uid;
+    req._id = payload._id;
     req.name = payload.name;
   } catch (error) {
     return res.status(401).json({

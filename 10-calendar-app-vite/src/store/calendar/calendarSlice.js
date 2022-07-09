@@ -17,20 +17,20 @@ export const calendarSlice = createSlice({
     },
     onUpdateEvent: (state, { payload }) => {
       state.events = state.events.map((event) => {
-        if (event.id === payload.id) return payload;
+        if (event._id === payload._id) return payload;
         return event;
       });
     },
     onDeleteEvent: (state) => {
       if (state.activeEvent) {
-        state.events = state.events.filter((event) => event.id !== state.activeEvent.id);
+        state.events = state.events.filter((event) => event._id !== state.activeEvent._id);
         state.activeEvent = null;
       }
     },
     onLoadingEvents: (state, { payload = [] }) => {
       // state.events = payload;
       payload.forEach((event) => {
-        const exist = state.events.some((dbEvent) => dbEvent.id === event.id);
+        const exist = state.events.some((dbEvent) => dbEvent._id === event._id);
         if (!exist) state.events.push(event);
       });
       state.isLoading = false;
