@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 import calendarApi from '../apis/calendarApi';
 import { convertEventsToDateEvents } from '../helpers/convertToDateEvents';
 import {
@@ -19,12 +20,19 @@ export const useCalendarStore = () => {
   };
 
   const startSavingEvent = async (calendarEvent) => {
-    if (calendarEvent._id) {
-      dispatch(onUpdateEvent(calendarEvent));
-    } else {
+    try {
+      if (calendarEvent.id) {
+        await calendarApi.put(`/events/${calendarEvent.id}`, calendarEvent);
+        dispatch(onUpdateEvent({ ...calendarEvent, user }));
+        return;
+      }
+
       const { data } = await calendarApi.post('/events', calendarEvent);
       console.log(data);
       dispatch(onAddNewEvent({ ...calendarEvent, id: data.eventSaved.id, user }));
+    } catch (error) {
+      console.log(error);
+      Swal.fire('Error al guardar la nota.', error.response.data.msg, 'error');
     }
   };
 
