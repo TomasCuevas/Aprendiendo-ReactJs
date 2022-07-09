@@ -36,8 +36,15 @@ export const useCalendarStore = () => {
     }
   };
 
-  const startDeletingEvent = () => {
-    dispatch(onDeleteEvent());
+  const startDeletingEvent = async () => {
+    try {
+      await calendarApi.delete(`/events/${activeEvent._id}`);
+      Swal.fire('Nota eliminada.', '', 'success');
+      dispatch(onDeleteEvent());
+    } catch (error) {
+      console.log(error);
+      Swal.fire('Error al eliminar la nota.', error.response.data.msg, 'error');
+    }
   };
 
   const startLoadingEvents = async () => {
