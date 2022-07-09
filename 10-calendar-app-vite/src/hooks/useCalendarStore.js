@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
+import calendarApi from '../apis/calendarApi';
 import { onAddNewEvent, onDeleteEvent, onSetActiveEvent, onUpdateEvent } from '../store';
 
 export const useCalendarStore = () => {
   const dispatch = useDispatch();
   const { events, activeEvent } = useSelector((state) => state.calendar);
+  const { user } = useSelector((state) => state.auth);
 
   const setActiveEvent = (calendarEvent) => {
     dispatch(onSetActiveEvent(calendarEvent));
@@ -13,8 +15,9 @@ export const useCalendarStore = () => {
     if (calendarEvent._id) {
       dispatch(onUpdateEvent(calendarEvent));
     } else {
-      calendarEvent._id = new Date().getTime();
-      dispatch(onAddNewEvent(calendarEvent));
+      const { data } = await calendarApi.post('/events', calendarEvent);
+      console.log(data);
+      dispatch(onAddNewEvent({ ...calendarEvent, id: data.eventSaved.id, user }));
     }
   };
 
