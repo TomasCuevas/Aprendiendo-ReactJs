@@ -12,7 +12,7 @@ export const AppRouter = () => {
     checkAuthToken();
   }, []);
 
-  if (status === 'checking') return <h3>Cargando...</h3>;
+  if (status === 'checking') return <h3 aria-label="loading">Cargando...</h3>;
 
   return (
     <Routes>

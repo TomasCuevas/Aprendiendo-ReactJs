@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { configureStore } from '@reduxjs/toolkit';
 import { renderHook, act } from '@testing-library/react';
 import { Provider } from 'react-redux';
@@ -7,7 +8,6 @@ import { authSlice } from '../../src/store';
 import { initialState } from '../__fixtures/authStates';
 import { testUserCredentials } from '../__fixtures/testUser';
 
-/* eslint-disable no-undef */
 const getMockStore = (initialState) => {
   return configureStore({
     reducer: {
