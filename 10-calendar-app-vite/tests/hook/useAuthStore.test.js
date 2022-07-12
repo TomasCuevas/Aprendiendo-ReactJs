@@ -129,4 +129,39 @@ describe('Pruebas en el useAuthStore', () => {
       user: {},
     });
   });
+
+  test('checkAuthToken debe fallar si no hay un token', async () => {
+    const mockStore = getMockStore(initialState);
+    const { result } = renderHook(() => useAuthStore(), {
+      wrapper: ({ children }) => <Provider store={mockStore}>{children}</Provider>,
+    });
+
+    await act(async () => {
+      await result.current.checkAuthToken();
+    });
+
+    const { errorMessage, status, user } = result.current;
+    expect({ errorMessage, status, user }).toEqual({
+      errorMessage: undefined,
+      status: 'not-authenticated',
+      user: {},
+    });
+  });
+
+  test('checkAuthToken debe de autenticar el usuario si hay un token', async () => {
+    const mockStore = getMockStore(initialState);
+    const { result } = renderHook(() => useAuthStore(), {
+      wrapper: ({ children }) => <Provider store={mockStore}>{children}</Provider>,
+    });
+
+    await act(async () => {
+      await result.current.startLogin(testUserCredentials);
+    });
+
+    await act(async () => {
+      await result.current.checkAuthToken();
+    });
+
+    expect(localStorage.getItem('token')).toEqual(expect.any(String));
+  });
 });
