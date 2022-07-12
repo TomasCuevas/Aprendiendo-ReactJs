@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { renderHook, act, waitFor } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import calendarApi from '../../src/apis/calendarApi';
 import { useAuthStore } from '../../src/hooks/useAuthStore';
@@ -110,5 +110,23 @@ describe('Pruebas en el useAuthStore', () => {
     expect(localStorage.getItem('token')).toEqual(expect.any(String));
 
     spy.mockRestore();
+  });
+
+  test('startRegister debe de fallar la creacion', async () => {
+    const mockStore = getMockStore(initialState);
+    const { result } = renderHook(() => useAuthStore(), {
+      wrapper: ({ children }) => <Provider store={mockStore}>{children}</Provider>,
+    });
+
+    await act(async () => {
+      await result.current.startRegister(testUserCredentials);
+    });
+
+    const { errorMessage, status, user } = result.current;
+    expect({ errorMessage, status, user }).toEqual({
+      errorMessage: expect.any(String),
+      status: 'not-authenticated',
+      user: {},
+    });
   });
 });
