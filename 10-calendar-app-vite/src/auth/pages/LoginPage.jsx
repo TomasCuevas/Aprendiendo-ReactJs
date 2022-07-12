@@ -54,7 +54,7 @@ export const LoginPage = () => {
   }, [errorMessage]);
 
   return (
-    <div className="container login-container">
+    <div aria-label="login-page" className="container login-container">
       <div className="row">
         <div className="col-md-6 login-form-1">
           <h3>Ingreso</h3>

@@ -47,7 +47,7 @@ export const CalendarPage = () => {
   }, []);
 
   return (
-    <>
+    <div aria-label="calendar-page">
       <Navbar />
       <Calendar
         culture="es"
@@ -70,6 +70,6 @@ export const CalendarPage = () => {
       <CalendarModal />
       <FabAddNew />
       <FabAddDelete />
-    </>
+    </div>
   );
 };
