@@ -12,17 +12,39 @@ const INITIAL_STATE: CounterState = {
   changes: 0,
 };
 
-export const CounterReducerComponent = () => {
-  const [counter, dispatch] = useReducer(first, INITIAL_STATE);
+type CounterAction = { type: 'increaseBy'; payload: { value: number } } | { type: 'reset' };
 
-  const onIncrement = () => {
-    setCounter((prev) => prev + 1);
+const counterReducer = (state: CounterState, action: CounterAction): CounterState => {
+  switch (action?.type) {
+    case 'increaseBy':
+      return {
+        counter: state.counter + action.payload.value,
+        previous: state.counter,
+        changes: state.changes + 1,
+      };
+
+    case 'reset':
+      return INITIAL_STATE;
+
+    default:
+      return state;
+  }
+};
+
+export const CounterReducerComponent = () => {
+  const [{ counter, previous, changes }, dispatch] = useReducer(counterReducer, INITIAL_STATE);
+
+  const onReset = () => {
+    dispatch({ type: 'reset' });
   };
+
+  const onIncrement = () => {};
 
   return (
     <>
       <h1>CounterReducer: {counter}</h1>
       <button onClick={onIncrement}>+1</button>
+      <button onClick={onReset}>Reset</button>
     </>
   );
 };
