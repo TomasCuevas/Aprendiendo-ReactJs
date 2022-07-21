@@ -1,3 +1,4 @@
+import { CounterEffect } from './bases/CounterEffect';
 import { Counter } from './bases/Counter';
 import { CounterBy } from './bases/CounterBy';
 
@@ -9,6 +10,7 @@ function App() {
 
       <Counter />
       <CounterBy />
+      <CounterEffect />
     </>
   );
 }
