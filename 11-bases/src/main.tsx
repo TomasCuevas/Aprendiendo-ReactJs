@@ -5,4 +5,4 @@ import { Counter } from './bases/Counter';
 
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<Counter init={15} />);
+ReactDOM.createRoot(document.getElementById('root')!).render(<Counter />);
