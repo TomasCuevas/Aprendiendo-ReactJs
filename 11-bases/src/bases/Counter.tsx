@@ -14,6 +14,7 @@ export const Counter = ({ initialValue = 10 }: Props) => {
   return (
     <>
       <h1>Counter: {counter}</h1>
+
       <button onClick={onIncrement}>+1</button>
     </>
   );

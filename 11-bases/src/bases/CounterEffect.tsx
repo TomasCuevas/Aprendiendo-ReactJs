@@ -25,6 +25,7 @@ export const CounterEffect = () => {
 
   return (
     <>
+      <hr />
       <h1>CounterEffect:</h1>
       <h2 ref={counterElement}>{counter}</h2>
 

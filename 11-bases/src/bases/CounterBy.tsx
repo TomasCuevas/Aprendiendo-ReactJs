@@ -24,6 +24,7 @@ export const CounterBy = ({ initialValue = 5 }: Props) => {
 
   return (
     <>
+      <hr />
       <h1>Counter: {counter}</h1>
       <h1>Clicks: {clicks}</h1>
 

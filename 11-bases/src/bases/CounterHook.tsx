@@ -8,6 +8,7 @@ export const CounterHook = () => {
 
   return (
     <>
+      <hr />
       <h1>CounterHook:</h1>
       <h2 ref={elementToAnimate}>{counter}</h2>
 

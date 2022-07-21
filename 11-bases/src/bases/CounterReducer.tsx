@@ -38,12 +38,20 @@ export const CounterReducerComponent = () => {
     dispatch({ type: 'reset' });
   };
 
-  const onIncrement = () => {};
+  const onIncreaseBy = (value: number) => {
+    dispatch({ type: 'increaseBy', payload: { value } });
+  };
 
   return (
     <>
-      <h1>CounterReducer: {counter}</h1>
-      <button onClick={onIncrement}>+1</button>
+      <hr />
+      <h1>
+        CounterReducer: {counter} | Previous: {previous} | Changes: {changes}
+      </h1>
+
+      <button onClick={() => onIncreaseBy(1)}>+1</button>
+      <button onClick={() => onIncreaseBy(5)}>+5</button>
+      <button onClick={() => onIncreaseBy(10)}>+10</button>
       <button onClick={onReset}>Reset</button>
     </>
   );
