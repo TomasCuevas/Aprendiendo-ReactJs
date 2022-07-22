@@ -2,9 +2,9 @@ import { Suspense } from 'react';
 import { BrowserRouter, Route, Routes, NavLink, Navigate } from 'react-router-dom';
 
 import { routes } from './routes';
-import logo from '../logo.svg';
+import logo from '../../logo.svg';
 
-export const Navigation = () => {
+export const NavigationLazyLoad = () => {
   return (
     <Suspense fallback={<span>Loading...</span>}>
       <BrowserRouter>
