@@ -1,9 +1,9 @@
-import { NavigationNasted } from './routes/nested/NavigationNasted';
+import { Navigation } from './routes/Navigation';
 
 export const App = () => {
   return (
     <>
-      <NavigationNasted />
+      <Navigation />
     </>
   );
 };
