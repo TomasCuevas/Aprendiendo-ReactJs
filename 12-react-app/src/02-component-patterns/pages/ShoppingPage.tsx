@@ -14,15 +14,15 @@ export const ShoppingPage = () => {
 
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         <ProductCard product={product}>
-          <ProductImage {...product} />
-          <ProductTitle {...product} />
-          {/* <ProductButtons {...product} /> */}
+          <ProductImage />
+          <ProductTitle />
+          <ProductButtons />
         </ProductCard>
 
         <ProductCard product={product}>
-          <ProductCard.Image {...product} />
-          <ProductCard.Title {...product} />
-          {/* <ProductButtons {...product} /> */}
+          <ProductCard.Image />
+          <ProductCard.Title />
+          <ProductCard.Buttons />
         </ProductCard>
       </div>
     </div>
