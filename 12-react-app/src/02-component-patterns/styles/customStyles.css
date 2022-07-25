@@ -18,3 +18,10 @@
   padding: 10px;
   width: calc(100% - 20px);
 }
+
+.custom__buttons button,
+.custom__buttons span {
+  background-color: rgb(56, 56, 56);
+  border-color: white;
+  color: white;
+}
