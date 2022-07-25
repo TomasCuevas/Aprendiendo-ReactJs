@@ -5,7 +5,7 @@ import noImage from '../assets/no-image.jpg';
 
 import Styles from '../styles/styles.module.css';
 
-interface Props {
+export interface Props {
   className?: string;
   img?: string;
 }
