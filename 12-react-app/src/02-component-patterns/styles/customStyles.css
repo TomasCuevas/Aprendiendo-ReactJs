@@ -1,3 +1,20 @@
 .bg__dark {
   background-color: rgb(56, 56, 56);
 }
+
+.text__white {
+  color: white;
+}
+
+.text__bold {
+  font-weight: 700;
+}
+
+.custom__image {
+  transition: 0.3s ease-in;
+}
+.custom__image:hover {
+  border-radius: 20px;
+  padding: 10px;
+  width: calc(100% - 20px);
+}

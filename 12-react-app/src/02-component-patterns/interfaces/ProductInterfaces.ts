@@ -3,8 +3,8 @@ import { Props as ProductCardProps } from '../components/ProductCard';
 
 export interface Product {
   id: string;
-  title: string;
   img?: string;
+  title: string;
 }
 
 export interface ProductContextProps {

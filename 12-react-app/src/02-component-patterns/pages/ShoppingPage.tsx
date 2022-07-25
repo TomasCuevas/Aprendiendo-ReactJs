@@ -3,8 +3,8 @@ import '../styles/customStyles.css';
 
 const product = {
   id: '1',
-  title: 'Coffee Mug - Card',
   img: './coffee-mug.png',
+  title: 'Coffee Mug - Card',
 };
 
 export const ShoppingPage = () => {
@@ -15,8 +15,8 @@ export const ShoppingPage = () => {
 
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         <ProductCard className="bg__dark" product={product}>
-          <ProductImage />
-          <ProductTitle />
+          <ProductImage className="custom__image" />
+          <ProductTitle className="text__white text__bold" />
           <ProductButtons />
         </ProductCard>
 

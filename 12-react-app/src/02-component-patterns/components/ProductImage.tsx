@@ -5,7 +5,12 @@ import noImage from '../assets/no-image.jpg';
 
 import Styles from '../styles/styles.module.css';
 
-export const ProductImage = ({ img }: { img?: string }) => {
+interface Props {
+  className?: string;
+  img?: string;
+}
+
+export const ProductImage = ({ img, className }: Props) => {
   const { product } = useContext(ProductContext);
   const { title } = product;
   let imgToShow: string;
@@ -19,6 +24,10 @@ export const ProductImage = ({ img }: { img?: string }) => {
   }
 
   return (
-    <img src={imgToShow} alt={title ? title : 'Image description'} className={Styles.productImg} />
+    <img
+      src={imgToShow}
+      alt={title ? title : 'Image description'}
+      className={`${Styles.productImg} ${className}`}
+    />
   );
 };
