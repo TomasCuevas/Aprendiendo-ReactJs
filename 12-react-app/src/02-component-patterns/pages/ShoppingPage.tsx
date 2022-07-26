@@ -26,15 +26,28 @@ export const ShoppingPage = () => {
 
   const onProductCountChange = ({ count, product }: onChangeArgs) => {
     setShoppingCart((oldShoppingCart) => {
-      if (count === 0) {
-        const { [product.id]: toDelete, ...rest } = oldShoppingCart;
-        return { ...rest };
+      const productInCart: ProductInCart = oldShoppingCart[product.id] || { ...product, count: 0 };
+
+      if (Math.max(productInCart.count + count, 0) > 0) {
+        productInCart.count += count;
+        return {
+          ...oldShoppingCart,
+          [product.id]: productInCart,
+        };
       }
 
-      return {
-        ...oldShoppingCart,
-        [product.id]: { ...product, count },
-      };
+      const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+      return { ...rest };
+
+      // if (count === 0) {
+      //   const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+      //   return { ...rest };
+      // }
+
+      // return {
+      //   ...oldShoppingCart,
+      //   [product.id]: { ...product, count },
+      // };
     });
   };
 
@@ -46,10 +59,10 @@ export const ShoppingPage = () => {
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         {products.map((product) => (
           <ProductCard
-            key={product.id}
-            product={product}
             className="bg__dark"
+            key={product.id}
             onChange={onProductCountChange}
+            product={product}
             value={shoppingCart[product.id]?.count || 0}
           >
             <ProductCard.Image className="custom__image" />
@@ -62,12 +75,12 @@ export const ShoppingPage = () => {
       <div className="shopping__card">
         {Object.entries(shoppingCart).map(([key, product]) => (
           <ProductCard
-            key={key}
-            product={product}
             className="bg__dark"
+            key={key}
+            onChange={onProductCountChange}
+            product={product}
             styles={{ width: '120px' }}
             value={product.count}
-            onChange={onProductCountChange}
           >
             <ProductCard.Image className="custom__image" />
             <ProductCard.Buttons className="custom__buttons" />
