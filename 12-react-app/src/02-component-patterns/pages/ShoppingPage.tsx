@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ProductCard, ProductButtons, ProductImage, ProductTitle } from '../components';
 import { Product } from '../interfaces/ProductInterfaces';
 import '../styles/customStyles.css';
@@ -16,7 +17,13 @@ const product2 = {
 
 const products: Product[] = [product1, product2];
 
+interface ProductInCart extends Product {
+  counter: number;
+}
+
 export const ShoppingPage = () => {
+  const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>();
+
   return (
     <div>
       <h1>Shopping Store</h1>
