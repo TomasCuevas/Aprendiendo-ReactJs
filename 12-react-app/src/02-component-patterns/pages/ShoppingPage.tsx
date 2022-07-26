@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ProductCard, ProductButtons, ProductImage, ProductTitle } from '../components';
 import { onChangeArgs, Product } from '../interfaces/ProductInterfaces';
 import '../styles/customStyles.css';
@@ -18,11 +18,11 @@ const product2 = {
 const products: Product[] = [product1, product2];
 
 interface ProductInCart extends Product {
-  counter: number;
+  count: number;
 }
 
 export const ShoppingPage = () => {
-  const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>();
+  const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
 
   const onProductCountChange = ({ count, product }: onChangeArgs) => {
     setShoppingCart((oldShoppingCart) => {
@@ -59,14 +59,12 @@ export const ShoppingPage = () => {
       </div>
 
       <div className="shopping__card">
-        <ProductCard product={product2} className="bg__dark" styles={{ width: '120px' }}>
-          <ProductCard.Image className="custom__image" />
-          <ProductCard.Buttons className="custom__buttons" />
-        </ProductCard>
-        <ProductCard product={product1} className="bg__dark" styles={{ width: '120px' }}>
-          <ProductCard.Image className="custom__image" />
-          <ProductCard.Buttons className="custom__buttons" />
-        </ProductCard>
+        {Object.entries(shoppingCart).map(([key, product]) => (
+          <ProductCard key={key} product={product} className="bg__dark" styles={{ width: '120px' }}>
+            <ProductCard.Image className="custom__image" />
+            <ProductCard.Buttons className="custom__buttons" />
+          </ProductCard>
+        ))}
       </div>
 
       <div>
