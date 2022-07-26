@@ -1,7 +1,8 @@
 import { ProductCard, ProductButtons, ProductImage, ProductTitle } from '../components';
+import { Product } from '../interfaces/ProductInterfaces';
 import '../styles/customStyles.css';
 
-const product = {
+const product1 = {
   id: '1',
   img: './coffee-mug.png',
   title: 'Coffee Mug - Card',
@@ -13,6 +14,8 @@ const product2 = {
   title: 'Coffee Mug - Card',
 };
 
+const products: Product[] = [product1, product2];
+
 export const ShoppingPage = () => {
   return (
     <div>
@@ -20,15 +23,22 @@ export const ShoppingPage = () => {
       <hr />
 
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-        <ProductCard product={product} className="bg__dark">
-          <ProductImage className="custom__image" />
-          <ProductTitle className="text__white text__bold" activeClassName="active" />
-          <ProductButtons className="custom__buttons" />
-        </ProductCard>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} className="bg__dark">
+            <ProductCard.Image className="custom__image" />
+            <ProductCard.Title className="text__white text__bold" />
+            <ProductCard.Buttons className="custom__buttons" />
+          </ProductCard>
+        ))}
+      </div>
 
-        <ProductCard product={product2} className="bg__dark">
+      <div className="shopping__card">
+        <ProductCard product={product2} className="bg__dark" styles={{ width: '120px' }}>
           <ProductCard.Image className="custom__image" />
-          <ProductCard.Title className="text__white text__bold" />
+          <ProductCard.Buttons className="custom__buttons" />
+        </ProductCard>
+        <ProductCard product={product1} className="bg__dark" styles={{ width: '120px' }}>
+          <ProductCard.Image className="custom__image" />
           <ProductCard.Buttons className="custom__buttons" />
         </ProductCard>
       </div>
