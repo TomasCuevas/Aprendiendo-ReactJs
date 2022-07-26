@@ -1,7 +1,8 @@
 import { createContext, CSSProperties, ReactElement } from 'react';
 
+import { ProductContextProps, Product, onChangeArgs } from '../interfaces/ProductInterfaces';
+
 import { useProduct } from '../hooks/useProduct';
-import { ProductContextProps, Product } from '../interfaces/ProductInterfaces';
 
 import Styles from '../styles/styles.module.css';
 
@@ -13,11 +14,11 @@ export interface Props {
   className?: string;
   product: Product;
   styles?: CSSProperties;
-  onChange?: () => void;
+  onChange?: (args: onChangeArgs) => void;
 }
 
 export const ProductCard = ({ children, product, className, styles, onChange }: Props) => {
-  const { counter, increaseBy } = useProduct(onChange);
+  const { counter, increaseBy } = useProduct({ product, onChange });
 
   return (
     <Provider
