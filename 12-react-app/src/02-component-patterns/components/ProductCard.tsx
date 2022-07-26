@@ -14,11 +14,12 @@ export interface Props {
   className?: string;
   product: Product;
   styles?: CSSProperties;
+  value?: number;
   onChange?: (args: onChangeArgs) => void;
 }
 
-export const ProductCard = ({ children, product, className, styles, onChange }: Props) => {
-  const { counter, increaseBy } = useProduct({ product, onChange });
+export const ProductCard = ({ children, product, className, styles, onChange, value }: Props) => {
+  const { counter, increaseBy } = useProduct({ product, onChange, value });
 
   return (
     <Provider
