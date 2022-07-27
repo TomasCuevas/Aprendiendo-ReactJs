@@ -12,7 +12,15 @@ export const ShoppingPage = () => {
       <hr />
 
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-        <ProductCard className="bg__dark" key={product.id} product={product}>
+        <ProductCard
+          className="bg__dark"
+          key={product.id}
+          product={product}
+          initialValues={{
+            count: 4,
+            maxCount: 10,
+          }}
+        >
           <ProductCard.Image className="custom__image" />
           <ProductCard.Title className="text__white text__bold" />
           <ProductCard.Buttons className="custom__buttons" />
