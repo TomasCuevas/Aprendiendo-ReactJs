@@ -21,9 +21,14 @@ export const ShoppingPage = () => {
             maxCount: 10,
           }}
         >
-          <ProductCard.Image className="custom__image" />
-          <ProductCard.Title className="text__white text__bold" />
-          <ProductCard.Buttons className="custom__buttons" />
+          {(message) => (
+            <>
+              <ProductCard.Image className="custom__image" />
+              <ProductCard.Title className="text__white text__bold" />
+              <ProductCard.Buttons className="custom__buttons" />
+              <h1>{message}</h1>
+            </>
+          )}
         </ProductCard>
       </div>
     </div>

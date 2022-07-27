@@ -15,7 +15,8 @@ export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
 export interface Props {
-  children?: ReactElement | ReactElement[];
+  // children?: ReactElement | ReactElement[];
+  children: (message: string) => JSX.Element;
   className?: string;
   initialValues?: InitialValues;
   product: Product;
@@ -42,7 +43,7 @@ export const ProductCard = ({
       }}
     >
       <div className={`${Styles.productCard} ${className}`} style={styles}>
-        {children}
+        {children('Hello World!')}
       </div>
     </Provider>
   );
