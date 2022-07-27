@@ -11,7 +11,11 @@ export const useProduct = ({ product, onChange, initialValues }: Props) => {
   const [counter, setCounter] = useState(initialValues?.count || 0);
 
   const increaseBy = (value: number) => {
-    const newValue = Math.max(counter + value, 0);
+    const alwaysMaxZero = Math.max(counter + value, 0);
+    const newValue = initialValues?.maxCount
+      ? Math.min(alwaysMaxZero, initialValues?.maxCount)
+      : alwaysMaxZero;
+
     setCounter(newValue);
 
     onChange && onChange({ count: newValue, product });
