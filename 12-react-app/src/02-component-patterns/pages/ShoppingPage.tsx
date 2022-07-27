@@ -21,12 +21,22 @@ export const ShoppingPage = () => {
             maxCount: 10,
           }}
         >
-          {(message) => (
+          {({
+            // properties
+            count,
+            increaseBy,
+            product,
+            maxCount,
+
+            // methods
+            isMaxCountReached,
+            reset,
+          }) => (
             <>
               <ProductCard.Image className="custom__image" />
               <ProductCard.Title className="text__white text__bold" />
               <ProductCard.Buttons className="custom__buttons" />
-              <h1>{message}</h1>
+              <button onClick={reset}>Reset</button>
             </>
           )}
         </ProductCard>

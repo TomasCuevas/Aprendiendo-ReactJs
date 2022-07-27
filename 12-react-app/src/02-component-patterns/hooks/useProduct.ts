@@ -9,6 +9,7 @@ interface Props {
 
 export const useProduct = ({ product, onChange, initialValues }: Props) => {
   const [counter, setCounter] = useState(initialValues?.count || 0);
+  const [isMaxCountReached, setIsMaxCountReached] = useState(false);
 
   const increaseBy = (value: number) => {
     const alwaysMaxZero = Math.max(counter + value, 0);
@@ -21,16 +22,26 @@ export const useProduct = ({ product, onChange, initialValues }: Props) => {
     onChange && onChange({ count: newValue, product });
   };
 
+  const reset = () => {
+    setCounter(initialValues?.count || 0);
+  };
+
   useEffect(() => {
     setCounter(initialValues?.count || 0);
   }, [initialValues?.count]);
 
+  useEffect(() => {
+    counter === initialValues?.maxCount ? setIsMaxCountReached(true) : setIsMaxCountReached(false);
+  }, [counter]);
+
   return {
     // properties
     counter,
+    isMaxCountReached,
     maxCount: initialValues?.maxCount,
 
     // methods
     increaseBy,
+    reset,
   };
 };
