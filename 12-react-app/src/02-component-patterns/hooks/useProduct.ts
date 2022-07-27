@@ -28,6 +28,7 @@ export const useProduct = ({ product, onChange, initialValues }: Props) => {
   return {
     // properties
     counter,
+    maxCount: initialValues?.maxCount,
 
     // methods
     increaseBy,
