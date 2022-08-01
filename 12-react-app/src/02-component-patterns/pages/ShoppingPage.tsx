@@ -13,7 +13,6 @@ export const ShoppingPage = () => {
 
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         <ProductCard
-          className="bg__dark"
           key={product.id}
           product={product}
           initialValues={{
@@ -33,14 +32,9 @@ export const ShoppingPage = () => {
             reset,
           }) => (
             <>
-              <ProductCard.Image className="custom__image" />
-              <ProductCard.Title className="text__white text__bold" />
-              <ProductCard.Buttons className="custom__buttons" />
-              <button onClick={reset}>Reset</button>
-              <button onClick={() => increaseBy(-2)}>-2</button>
-              {count + 2 <= 10 && <button onClick={() => increaseBy(2)}>+2</button>}
-
-              <span>{count}</span>
+              <ProductImage />
+              <ProductTitle />
+              <ProductButtons />
             </>
           )}
         </ProductCard>
