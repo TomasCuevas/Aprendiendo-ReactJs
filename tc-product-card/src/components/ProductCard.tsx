@@ -1,4 +1,4 @@
-import { createContext, CSSProperties } from 'react';
+import React, { createContext, CSSProperties } from 'react';
 
 import {
   InitialValues,
