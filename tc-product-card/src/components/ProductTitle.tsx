@@ -22,6 +22,7 @@ export const ProductTitle = ({
     <span
       className={`${Styles.productDescription} ${className} ${activeClassName}`}
       style={styles}
+      aria-label="span-test"
     >
       {title ? title : product.title}
     </span>
