@@ -13,7 +13,7 @@ export interface Props {
 
 export const ProductImage = ({ img, className, styles }: Props) => {
   const { product } = useContext(ProductContext);
-  const { title } = product;
+  const title = product?.title;
   let imgToShow: string;
 
   if (img) {
