@@ -8,42 +8,43 @@ interface FormValues {
   email: string;
 }
 
+const validate = ({ firstName, lastName, email }: FormValues) => {
+  const errors: FormikErrors<FormValues> = {};
+
+  if (!firstName.trim()) {
+    errors.firstName = 'First name is required.';
+  } else if (firstName.length > 15) {
+    errors.firstName = 'Must be 15 characters or less.';
+  }
+
+  if (!lastName.trim()) {
+    errors.lastName = 'Last name is required.';
+  } else if (lastName.length > 15) {
+    errors.lastName = 'Must be 15 characters or less.';
+  }
+
+  if (!email.trim()) {
+    errors.email = 'Email is required.';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+    errors.email = 'Invalid email address';
+  }
+
+  return errors;
+};
+
 export const FormikBasicPage = () => {
-  const validate = ({ firstName, lastName, email }: FormValues) => {
-    const errors: FormikErrors<FormValues> = {};
-
-    if (!firstName.trim()) {
-      errors.firstName = 'Required.';
-    } else if (firstName.length > 15) {
-      errors.firstName = 'Must be 15 characters or less.';
-    }
-
-    if (!lastName.trim()) {
-      errors.lastName = 'Required.';
-    } else if (lastName.length > 15) {
-      errors.lastName = 'Must be 15 characters or less.';
-    }
-
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-      errors.email = 'Invalid email address';
-    }
-
-    return errors;
-  };
-
-  const { handleChange, values, handleSubmit } = useFormik({
-    initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    validate,
-  });
+  const { handleChange, values, handleSubmit, errors, touched, handleBlur } =
+    useFormik({
+      initialValues: {
+        firstName: '',
+        lastName: '',
+        email: '',
+      },
+      onSubmit: (values) => {
+        console.log(values);
+      },
+      validate,
+    });
 
   return (
     <div>
@@ -52,30 +53,38 @@ export const FormikBasicPage = () => {
       <form onSubmit={handleSubmit} noValidate>
         <label htmlFor="firstName">First Name</label>
         <input
+          id="firstName"
           name="firstName"
+          onBlur={handleBlur}
           onChange={handleChange}
           type="text"
           value={values.firstName}
         />
-        <span>First name is required</span>
+        {touched.firstName && errors.firstName && (
+          <span>{errors.firstName}</span>
+        )}
 
         <label htmlFor="lastName">Last Name</label>
         <input
+          id="lastName"
           name="lastName"
+          onBlur={handleBlur}
           onChange={handleChange}
           type="text"
           value={values.lastName}
         />
-        <span>Last name is required</span>
+        {touched.lastName && errors.lastName && <span>{errors.lastName}</span>}
 
         <label htmlFor="email">Email</label>
         <input
+          id="email"
           name="email"
+          onBlur={handleBlur}
           onChange={handleChange}
           type="email"
           value={values.email}
         />
-        <span>Email is required</span>
+        {touched.email && errors.email && <span>{errors.email}</span>}
 
         <button type="submit">Register</button>
       </form>
