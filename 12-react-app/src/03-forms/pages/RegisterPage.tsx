@@ -18,13 +18,30 @@ export const RegisterPage = () => {
     });
   };
 
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(registerData);
+  };
+
   return (
     <div>
       <h1>RegisterPage</h1>
 
-      <form>
-        <input type="text" placeholder="Name" name="name" value={name} onChange={onChange} />
-        <input type="email" placeholder="Email" name="email" value={email} onChange={onChange} />
+      <form noValidate onSubmit={onSubmit}>
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          value={name}
+          onChange={onChange}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={email}
+          onChange={onChange}
+        />
         <input
           type="password"
           placeholder="Password"
