@@ -1,18 +1,48 @@
-import { useFormik } from 'formik';
+import { FormikErrors, useFormik } from 'formik';
 
 import '../styles/styles.css';
 
+interface FormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 export const FormikBasicPage = () => {
+  const validate = ({ firstName, lastName, email }: FormValues) => {
+    const errors: FormikErrors<FormValues> = {};
+
+    if (!firstName.trim()) {
+      errors.firstName = 'Required.';
+    } else if (firstName.length > 15) {
+      errors.firstName = 'Must be 15 characters or less.';
+    }
+
+    if (!lastName.trim()) {
+      errors.lastName = 'Required.';
+    } else if (lastName.length > 15) {
+      errors.lastName = 'Must be 15 characters or less.';
+    }
+
+    if (!values.email) {
+      errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+      errors.email = 'Invalid email address';
+    }
+
+    return errors;
+  };
+
   const { handleChange, values, handleSubmit } = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
     },
     onSubmit: (values) => {
       console.log(values);
     },
+    validate,
   });
 
   return (
@@ -46,15 +76,6 @@ export const FormikBasicPage = () => {
           value={values.email}
         />
         <span>Email is required</span>
-
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          onChange={handleChange}
-          type="password"
-          value={values.password}
-        />
-        <span>Password is required</span>
 
         <button type="submit">Register</button>
       </form>
