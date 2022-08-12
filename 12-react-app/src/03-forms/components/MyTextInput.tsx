@@ -14,7 +14,12 @@ export const MyTextInput = ({ label, ...props }: Props) => {
   return (
     <>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <input {...field} {...props} className="text-input" />
+      <input
+        {...field}
+        {...props}
+        className="text-input"
+        id={props.id || props.name}
+      />
       {meta.touched && meta.error && (
         <span className="error">{meta.error}</span>
       )}

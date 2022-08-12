@@ -6,13 +6,20 @@ interface Props {
   name: string;
 }
 
-export const MySelect = ({ label, ...props }: Props) => {
+export const MyCheckbox = ({ label, ...props }: Props) => {
   const [field, meta] = useField(props);
 
   return (
     <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <select {...field} {...props} id={props.id || props.name} />
+      <label htmlFor={props.id || props.name}>
+        <input
+          {...field}
+          {...props}
+          id={props.id || props.name}
+          type="checkbox"
+        />
+        {label}
+      </label>
       {meta.touched && meta.error && (
         <span className="error">{meta.error}</span>
       )}
