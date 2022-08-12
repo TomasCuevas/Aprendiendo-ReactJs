@@ -6,13 +6,15 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import { FormikBasicPage } from '../03-forms/pages/FormikBasicPage';
-import { RegisterPage } from '../03-forms/pages/RegisterPage';
-import { FormikYupPage } from '../03-forms/pages/FormikYupPage';
+import {
+  FormikAbstractation,
+  FormikBasicPage,
+  FormikComponents,
+  FormikYupPage,
+  RegisterPage,
+} from '../03-forms/pages';
 
 import logo from '../logo.svg';
-import { FormikComponents } from '../03-forms/pages/FormikComponents';
-import { FormikAbstractation } from '../03-forms/pages/FormikAbstractation';
 
 export const Navigation = () => {
   return (
