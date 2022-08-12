@@ -9,7 +9,13 @@ export const FormikComponents = () => {
       <h1>Formik Components</h1>
 
       <Formik
-        initialValues={{ firstName: '', lastName: '', email: '' }}
+        initialValues={{
+          firstName: '',
+          lastName: '',
+          email: '',
+          terms: false,
+          jobType: '',
+        }}
         onSubmit={(values) => console.log(values)}
         validationSchema={Yup.object({
           firstName: Yup.string()
@@ -21,6 +27,13 @@ export const FormikComponents = () => {
           email: Yup.string()
             .email('It is not a valid email.')
             .required('Email is required.'),
+          terms: Yup.boolean().oneOf([true], 'You must accept the conditions.'),
+          jobType: Yup.string()
+            .required('Job type is required.')
+            .notOneOf(
+              ['frontend junior'],
+              'We are not looking for frontend juniors.',
+            ),
         })}
       >
         {(formik) => (
@@ -36,6 +49,22 @@ export const FormikComponents = () => {
             <label htmlFor="email">Email</label>
             <Field id="email" name="email" type="text" />
             <ErrorMessage name="email" component="span" />
+
+            <label htmlFor="jobType">Job Type</label>
+            <Field id="jobType" name="jobType" as="select">
+              <option value="">Pick something</option>
+              <option value="development">Development</option>
+              <option value="designer">Designer</option>
+              <option value="frontend senior">Frontend Senior</option>
+              <option value="frontend junior">Frontend Junior</option>
+            </Field>
+            <ErrorMessage name="jobType" component="span" />
+
+            <label htmlFor="terms">
+              <Field id="terms" name="terms" type="checkbox" />
+              Terms and conditions
+            </label>
+            <ErrorMessage name="terms" component="span" />
 
             <button type="submit">Register</button>
           </Form>
