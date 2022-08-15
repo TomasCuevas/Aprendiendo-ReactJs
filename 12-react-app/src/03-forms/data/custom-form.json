@@ -1,13 +1,13 @@
 [
   {
-    "type": "input",
+    "type": "text",
     "name": "firstName",
     "placeholder": "John",
     "label": "First Name",
     "value": ""
   },
   {
-    "type": "input",
+    "type": "text",
     "name": "lastName",
     "placeholder": "Snow",
     "label": "Last Name",
@@ -19,5 +19,25 @@
     "placeholder": "johnSnow@email.com",
     "label": "Email",
     "value": ""
+  },
+  {
+    "type": "select",
+    "name": "favoriteGame",
+    "label": "Favorite Game",
+    "value": "",
+    "options": [
+      {
+        "id": 1,
+        "label": "Super Smash"
+      },
+      {
+        "id": 2,
+        "label": "Metal GearSmash"
+      },
+      {
+        "id": 3,
+        "label": "Resident Evil"
+      }
+    ]
   }
 ]
