@@ -8,6 +8,10 @@
     "validations": [
       {
         "type": "required"
+      },
+      {
+        "type": "min",
+        "value": 2
       }
     ]
   },
@@ -20,6 +24,10 @@
     "validations": [
       {
         "type": "required"
+      },
+      {
+        "type": "min",
+        "value": 2
       }
     ]
   },
@@ -32,6 +40,9 @@
     "validations": [
       {
         "type": "required"
+      },
+      {
+        "type": "email"
       }
     ]
   },
