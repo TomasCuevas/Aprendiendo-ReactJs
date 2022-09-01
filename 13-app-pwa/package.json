@@ -1,0 +1,17 @@
+{
+  "name": "14-app-pwa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "calendar-app-backend",
+    "calendar-app-frontend"
+  ],
+  "scripts": {
+    "dev:back": "npm run dev --workspace=calendar-app-backend",
+    "dev:front": "npm run dev --workspace=calendar-app-frontend"
+  },
+  "keywords": [],
+  "author": "Tomas Cuevas",
+  "license": "ISC"
+}
